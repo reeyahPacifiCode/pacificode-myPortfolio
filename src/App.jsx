@@ -7,7 +7,7 @@ export default function Portfolio() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [typedText, setTypedText] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
-  const titles = ['UI/UX Designer', 'Web Developer', 'Creative Designer', 'Programmer'];
+  const titles = ['Web Developer', 'UI/UX Designer', 'IT Student', 'Front-End Developer'];
   const [titleIndex, setTitleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -66,7 +66,7 @@ export default function Portfolio() {
       category: 'UI/UX Design',
       image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&h=600&fit=crop',
       description: 'Modern and clean portfolio design with smooth animations and interactive elements.',
-      tech: ['Figma', 'Adobe XD', 'Photoshop'],
+      tech: ['Figma', 'Adobe XD', 'Canva'],
       liveUrl: '#',
       githubUrl: '#'
     },
@@ -93,12 +93,12 @@ export default function Portfolio() {
   ];
 
   const skills = [
-    { name: 'React JS', level: 90 },
-    { name: 'UI/UX Design', level: 85 },
-    { name: 'JavaScript', level: 88 },
-    { name: 'Tailwind CSS', level: 92 },
-    { name: 'Node.js', level: 80 },
-    { name: 'Figma', level: 87 }
+    { name: 'React JS', level: 70 },
+    { name: 'UI/UX Design', level: 75 },
+    { name: 'JavaScript', level: 65 },
+    { name: 'Tailwind CSS', level: 80 },
+    { name: 'Java & C++', level: 60 },
+    { name: 'Computer Networking', level: 70 }
   ];
 
   const [formData, setFormData] = useState({
@@ -114,37 +114,54 @@ export default function Portfolio() {
   };
 
   const downloadCV = () => {
-    alert('CV Download started! (Connect your actual CV file here)');
+    const link = document.createElement('a');
+    link.href = '/PACIFICADOR,RHEAMAE.pdf';
+    link.download = 'PACIFICADOR_RHEAMAE_CV.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
     <div className={darkMode ? 'dark' : ''}>
-      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+      <div className="min-h-screen bg-white dark:bg-[#2D2D2D] transition-colors duration-300">
         
         {/* Navigation */}
-        <nav className="fixed top-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm z-50 border-b border-gray-200 dark:border-gray-800">
+        <nav className="fixed top-0 w-full bg-white/90 dark:bg-[#2D2D2D]/90 backdrop-blur-sm z-50 border-b border-gray-200 dark:border-[#394931]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
-              <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center">
-                  <span className="text-xl font-bold text-gray-900">N</span>
-                </div>
-                <span className="text-xl font-bold text-gray-900 dark:text-white">NIMBUS</span>
+              <div className="flex items-center space-x-3">
+                <img 
+                  src="/logo.png" 
+                  alt="Pacificode Logo" 
+                  className="w-10 h-10 object-contain"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.marginLeft = '0';
+                  }}
+                />
+                <span className="text-xl font-bold text-gray-900 dark:text-[#E1DBCB]">PACIFICODE</span>
               </div>
 
               {/* Desktop Menu */}
               <div className="hidden md:flex items-center space-x-8">
-                <button onClick={() => scrollToSection('home')} className="text-gray-700 dark:text-gray-300 hover:text-yellow-500 transition">Home</button>
-                <button onClick={() => scrollToSection('about')} className="text-gray-700 dark:text-gray-300 hover:text-yellow-500 transition">About</button>
-                <button onClick={() => scrollToSection('projects')} className="text-gray-700 dark:text-gray-300 hover:text-yellow-500 transition">Projects</button>
-                <button onClick={() => scrollToSection('skills')} className="text-gray-700 dark:text-gray-300 hover:text-yellow-500 transition">Skills</button>
-                <button onClick={() => scrollToSection('contact')} className="text-gray-700 dark:text-gray-300 hover:text-yellow-500 transition">Contact</button>
+                <NavLink onClick={() => scrollToSection('home')}>Home</NavLink>
+                <NavLink onClick={() => scrollToSection('about')}>About</NavLink>
+                <NavLink onClick={() => scrollToSection('projects')}>Projects</NavLink>
+                <NavLink onClick={() => scrollToSection('skills')}>Skills</NavLink>
+                <NavLink onClick={() => scrollToSection('contact')}>Contact</NavLink>
                 
                 <div className="flex items-center space-x-4">
-                  <button onClick={() => setDarkMode(!darkMode)} className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition">
-                    {darkMode ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-gray-700" />}
+                  <button 
+                    onClick={() => setDarkMode(!darkMode)} 
+                    className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-[#394931] transition"
+                  >
+                    {darkMode ? <Sun className="w-5 h-5 text-[#9ca089]" /> : <Moon className="w-5 h-5 text-gray-700" />}
                   </button>
-                  <button onClick={downloadCV} className="bg-gray-900 dark:bg-yellow-400 text-white dark:text-gray-900 px-4 py-2 rounded-lg hover:bg-gray-800 dark:hover:bg-yellow-500 transition">
+                  <button 
+                    onClick={downloadCV}
+                    className="bg-[#394931] dark:bg-[#5d624c] text-white dark:text-[#E1DBCB] px-4 py-2 rounded-lg hover:bg-[#5d624c] dark:hover:bg-[#868b6b] transition font-semibold"
+                  >
                     Contact Me
                   </button>
                 </div>
@@ -153,10 +170,10 @@ export default function Portfolio() {
               {/* Mobile Menu Button */}
               <div className="md:hidden flex items-center space-x-2">
                 <button onClick={() => setDarkMode(!darkMode)} className="p-2">
-                  {darkMode ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-gray-700" />}
+                  {darkMode ? <Sun className="w-5 h-5 text-[#9ca089]" /> : <Moon className="w-5 h-5 text-gray-700" />}
                 </button>
                 <button onClick={() => setMenuOpen(!menuOpen)} className="p-2">
-                  {menuOpen ? <XIcon className="w-6 h-6 dark:text-white" /> : <Menu className="w-6 h-6 dark:text-white" />}
+                  {menuOpen ? <X className="w-6 h-6 dark:text-[#E1DBCB]" /> : <Menu className="w-6 h-6 dark:text-[#E1DBCB]" />}
                 </button>
               </div>
             </div>
@@ -164,13 +181,13 @@ export default function Portfolio() {
 
           {/* Mobile Menu */}
           {menuOpen && (
-            <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+            <div className="md:hidden bg-white dark:bg-[#2D2D2D] border-t border-gray-200 dark:border-[#394931]">
               <div className="px-4 py-4 space-y-3">
-                <button onClick={() => scrollToSection('home')} className="block w-full text-left text-gray-700 dark:text-gray-300">Home</button>
-                <button onClick={() => scrollToSection('about')} className="block w-full text-left text-gray-700 dark:text-gray-300">About</button>
-                <button onClick={() => scrollToSection('projects')} className="block w-full text-left text-gray-700 dark:text-gray-300">Projects</button>
-                <button onClick={() => scrollToSection('skills')} className="block w-full text-left text-gray-700 dark:text-gray-300">Skills</button>
-                <button onClick={() => scrollToSection('contact')} className="block w-full text-left text-gray-700 dark:text-gray-300">Contact</button>
+                <button onClick={() => scrollToSection('home')} className="block w-full text-left text-gray-700 dark:text-[#E1DBCB] py-2">Home</button>
+                <button onClick={() => scrollToSection('about')} className="block w-full text-left text-gray-700 dark:text-[#E1DBCB] py-2">About</button>
+                <button onClick={() => scrollToSection('projects')} className="block w-full text-left text-gray-700 dark:text-[#E1DBCB] py-2">Projects</button>
+                <button onClick={() => scrollToSection('skills')} className="block w-full text-left text-gray-700 dark:text-[#E1DBCB] py-2">Skills</button>
+                <button onClick={() => scrollToSection('contact')} className="block w-full text-left text-gray-700 dark:text-[#E1DBCB] py-2">Contact</button>
               </div>
             </div>
           )}
@@ -182,85 +199,93 @@ export default function Portfolio() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <h2 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white">
-                    Hi! I'm Ameli Nimbus -
+                  <h2 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-[#E1DBCB]">
+                    Hi! I'm Rhea Mae -
                   </h2>
-                  <h3 className="text-3xl md:text-4xl font-bold text-yellow-500">
+                  <h3 className="text-3xl md:text-4xl font-bold text-[#394931] dark:text-[#9ca089]">
                     {typedText}
                     <span className="animate-pulse">|</span>
                   </h3>
                 </div>
                 
-                <p className="text-gray-600 dark:text-gray-400 text-lg">
-                  Product Designer and Digital Creative Director working in design field for 13 years so far, specialized in UI/UX, Branding and digital design.
+                <p className="text-gray-600 dark:text-[#c5beab] text-lg">
+                  A dedicated and hardworking IT Student with basic knowledge of web development, UI/UX design, and programming. 
+                  Currently building experience and skills, eager to learn and explore new opportunities.
                 </p>
 
                 <div className="space-y-3">
                   <div className="flex items-center space-x-4 text-sm">
-                    <span className="font-semibold text-gray-900 dark:text-white">Email:</span>
-                    <span className="text-gray-600 dark:text-gray-400">nimbus2000@gmail.com</span>
+                    <span className="font-semibold text-gray-900 dark:text-[#E1DBCB]">Email:</span>
+                    <span className="text-gray-600 dark:text-[#c5beab]">reeyuhpacific@gmail.com</span>
                   </div>
                   <div className="flex items-center space-x-4 text-sm">
-                    <span className="font-semibold text-gray-900 dark:text-white">Behance:</span>
-                    <span className="text-gray-600 dark:text-gray-400">behance.net/nimbus2000</span>
+                    <span className="font-semibold text-gray-900 dark:text-[#E1DBCB]">Location:</span>
+                    <span className="text-gray-600 dark:text-[#c5beab]">Dasmariñas, Cavite, Philippines</span>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-4 pt-4">
-                  <button onClick={downloadCV} className="flex items-center space-x-2 bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg hover:bg-yellow-500 transition font-semibold">
+                  <button 
+                    onClick={downloadCV}
+                    className="flex items-center space-x-2 bg-[#394931] dark:bg-[#5d624c] text-white dark:text-[#E1DBCB] px-6 py-3 rounded-lg hover:bg-[#5d624c] dark:hover:bg-[#868b6b] transition font-semibold"
+                  >
                     <Download className="w-5 h-5" />
                     <span>Download CV</span>
                   </button>
-                  <button onClick={() => scrollToSection('contact')} className="bg-gray-900 dark:bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 transition font-semibold">
+                  <button 
+                    onClick={() => scrollToSection('contact')} 
+                    className="bg-gray-900 dark:bg-[#394931] text-white dark:text-[#E1DBCB] px-6 py-3 rounded-lg hover:bg-gray-800 dark:hover:bg-[#5d624c] transition font-semibold"
+                  >
                     Hire Me Now
                   </button>
                 </div>
 
                 <div className="flex items-center space-x-4 pt-4">
-                  <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-yellow-500 transition">
+                  <a href="#" className="text-gray-600 dark:text-[#c5beab] hover:text-[#394931] dark:hover:text-[#9ca089] transition">
                     <Twitter className="w-5 h-5" />
                   </a>
-                  <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-yellow-500 transition">
+                  <a href="#" className="text-gray-600 dark:text-[#c5beab] hover:text-[#394931] dark:hover:text-[#9ca089] transition">
                     <Linkedin className="w-5 h-5" />
                   </a>
-                  <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-yellow-500 transition">
+                  <a href="#" className="text-gray-600 dark:text-[#c5beab] hover:text-[#394931] dark:hover:text-[#9ca089] transition">
                     <Github className="w-5 h-5" />
                   </a>
-                  <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-yellow-500 transition">
+                  <a href="#" className="text-gray-600 dark:text-[#c5beab] hover:text-[#394931] dark:hover:text-[#9ca089] transition">
                     <Instagram className="w-5 h-5" />
                   </a>
                 </div>
               </div>
 
               <div className="relative">
-                <div className="absolute inset-0 bg-yellow-400 rounded-full blur-3xl opacity-20"></div>
-                <div className="relative bg-yellow-400 rounded-full overflow-hidden aspect-square">
+                <div className="absolute inset-0 bg-[#394931] dark:bg-[#5d624c] rounded-full blur-3xl opacity-20"></div>
+                <div className="relative bg-[#9ca089] dark:bg-[#5d624c] rounded-full overflow-hidden aspect-square">
                   <img 
                     src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&h=800&fit=crop"
                     alt="Profile"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gray-900 dark:bg-gray-800 rounded-full opacity-50"></div>
-                <div className="absolute -top-6 -right-6 w-24 h-24 border-4 border-yellow-400 rounded-full"></div>
+                <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-[#394931] dark:bg-[#2D2D2D] rounded-full opacity-50"></div>
+                <div className="absolute -top-6 -right-6 w-24 h-24 border-4 border-[#394931] dark:border-[#9ca089] rounded-full"></div>
               </div>
             </div>
           </div>
         </section>
 
         {/* About Section */}
-        <section id="about" className="py-20 bg-gray-50 dark:bg-gray-800">
+        <section id="about" className="py-20 bg-gray-50 dark:bg-[#394931]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">About Me</h2>
-              <div className="w-20 h-1 bg-yellow-400 mx-auto"></div>
+              <h2 className="text-4xl font-bold text-gray-900 dark:text-[#E1DBCB] mb-4">About Me</h2>
+              <div className="w-20 h-1 bg-[#394931] dark:bg-[#9ca089] mx-auto"></div>
             </div>
             <div className="max-w-3xl mx-auto text-center">
-              <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-6">
-                I'm a passionate designer and developer with over 13 years of experience in creating beautiful, functional digital experiences. I specialize in UI/UX design, branding, and web development.
+              <p className="text-gray-600 dark:text-[#E1DBCB] text-lg leading-relaxed mb-6">
+                I'm currently pursuing a Bachelor's degree in Information Technology at Cavite State University - Silang Campus. 
+                I have gained experience through internships and certifications in front-end development, computer networking, and UI/UX design.
               </p>
-              <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
-                My goal is to bridge the gap between design and technology, creating solutions that are not only visually appealing but also user-friendly and technically sound.
+              <p className="text-gray-600 dark:text-[#E1DBCB] text-lg leading-relaxed">
+                My goal is to create user-friendly and visually appealing digital solutions while continuously learning and improving my technical skills.
               </p>
             </div>
           </div>
@@ -270,19 +295,19 @@ export default function Portfolio() {
         <section id="skills" className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">My Skills</h2>
-              <div className="w-20 h-1 bg-yellow-400 mx-auto"></div>
+              <h2 className="text-4xl font-bold text-gray-900 dark:text-[#E1DBCB] mb-4">My Skills</h2>
+              <div className="w-20 h-1 bg-[#394931] dark:bg-[#9ca089] mx-auto"></div>
             </div>
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {skills.map((skill, index) => (
                 <div key={index} className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <span className="font-semibold text-gray-900 dark:text-white">{skill.name}</span>
-                    <span className="text-yellow-500 font-semibold">{skill.level}%</span>
+                    <span className="font-semibold text-gray-900 dark:text-[#E1DBCB]">{skill.name}</span>
+                    <span className="text-[#394931] dark:text-[#9ca089] font-semibold">{skill.level}%</span>
                   </div>
-                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                  <div className="w-full bg-gray-200 dark:bg-[#394931] rounded-full h-3">
                     <div 
-                      className="bg-yellow-400 h-3 rounded-full transition-all duration-1000"
+                      className="bg-[#394931] dark:bg-[#9ca089] h-3 rounded-full transition-all duration-1000"
                       style={{ width: `${skill.level}%` }}
                     ></div>
                   </div>
@@ -293,18 +318,18 @@ export default function Portfolio() {
         </section>
 
         {/* Projects Section */}
-        <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
+        <section id="projects" className="py-20 bg-gray-50 dark:bg-[#394931]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">My Projects</h2>
-              <div className="w-20 h-1 bg-yellow-400 mx-auto"></div>
+              <h2 className="text-4xl font-bold text-gray-900 dark:text-[#E1DBCB] mb-4">My Projects</h2>
+              <div className="w-20 h-1 bg-[#394931] dark:bg-[#9ca089] mx-auto"></div>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
               {projects.map((project) => (
                 <div 
                   key={project.id}
                   onClick={() => setSelectedProject(project)}
-                  className="group bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2"
+                  className="group bg-white dark:bg-[#2D2D2D] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2"
                 >
                   <div className="relative overflow-hidden h-64">
                     <img 
@@ -317,9 +342,9 @@ export default function Portfolio() {
                     </div>
                   </div>
                   <div className="p-6">
-                    <span className="text-yellow-500 text-sm font-semibold">{project.category}</span>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mt-2">{project.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-400 mt-2 line-clamp-2">{project.description}</p>
+                    <span className="text-[#394931] dark:text-[#9ca089] text-sm font-semibold">{project.category}</span>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-[#E1DBCB] mt-2">{project.title}</h3>
+                    <p className="text-gray-600 dark:text-[#c5beab] mt-2 line-clamp-2">{project.description}</p>
                   </div>
                 </div>
               ))}
@@ -331,11 +356,11 @@ export default function Portfolio() {
         <section id="contact" className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Get In Touch</h2>
-              <div className="w-20 h-1 bg-yellow-400 mx-auto"></div>
+              <h2 className="text-4xl font-bold text-gray-900 dark:text-[#E1DBCB] mb-4">Get In Touch</h2>
+              <div className="w-20 h-1 bg-[#394931] dark:bg-[#9ca089] mx-auto"></div>
             </div>
             <div className="max-w-2xl mx-auto">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-6">
                 <div>
                   <input
                     type="text"
@@ -343,7 +368,7 @@ export default function Portfolio() {
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-[#394931] bg-white dark:bg-[#2D2D2D] text-gray-900 dark:text-[#E1DBCB] focus:ring-2 focus:ring-[#394931] dark:focus:ring-[#9ca089] outline-none transition"
                   />
                 </div>
                 <div>
@@ -353,7 +378,7 @@ export default function Portfolio() {
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-400 outline-none transition"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-[#394931] bg-white dark:bg-[#2D2D2D] text-gray-900 dark:text-[#E1DBCB] focus:ring-2 focus:ring-[#394931] dark:focus:ring-[#9ca089] outline-none transition"
                   />
                 </div>
                 <div>
@@ -363,17 +388,17 @@ export default function Portfolio() {
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-400 outline-none transition resize-none"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-[#394931] bg-white dark:bg-[#2D2D2D] text-gray-900 dark:text-[#E1DBCB] focus:ring-2 focus:ring-[#394931] dark:focus:ring-[#9ca089] outline-none transition resize-none"
                   ></textarea>
                 </div>
                 <button
-                  type="submit"
-                  className="w-full bg-yellow-400 text-gray-900 py-3 rounded-lg hover:bg-yellow-500 transition font-semibold flex items-center justify-center space-x-2"
+                  onClick={handleSubmit}
+                  className="w-full bg-[#394931] dark:bg-[#5d624c] text-white dark:text-[#E1DBCB] py-3 rounded-lg hover:bg-[#5d624c] dark:hover:bg-[#868b6b] transition font-semibold flex items-center justify-center space-x-2"
                 >
                   <Mail className="w-5 h-5" />
                   <span>Send Message</span>
                 </button>
-              </form>
+              </div>
             </div>
           </div>
         </section>
@@ -381,12 +406,15 @@ export default function Portfolio() {
         {/* Footer */}
         <footer className="bg-gray-900 dark:bg-black text-white py-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p className="text-gray-400">© 2024 Nimbus Portfolio. All rights reserved.</p>
+            <p className="text-gray-400 dark:text-[#c5beab]">© 2024 Pacificode. All rights reserved.</p>
+            <p className="text-gray-500 dark:text-[#868b6b] text-sm mt-2">
+              Developed with assistance from Claude AI
+            </p>
             <div className="flex items-center justify-center space-x-4 mt-4">
-              <a href="#" className="text-gray-400 hover:text-yellow-400 transition"><Twitter className="w-5 h-5" /></a>
-              <a href="#" className="text-gray-400 hover:text-yellow-400 transition"><Linkedin className="w-5 h-5" /></a>
-              <a href="#" className="text-gray-400 hover:text-yellow-400 transition"><Github className="w-5 h-5" /></a>
-              <a href="#" className="text-gray-400 hover:text-yellow-400 transition"><Instagram className="w-5 h-5" /></a>
+              <a href="#" className="text-gray-400 hover:text-[#9ca089] transition"><Twitter className="w-5 h-5" /></a>
+              <a href="#" className="text-gray-400 hover:text-[#9ca089] transition"><Linkedin className="w-5 h-5" /></a>
+              <a href="#" className="text-gray-400 hover:text-[#9ca089] transition"><Github className="w-5 h-5" /></a>
+              <a href="#" className="text-gray-400 hover:text-[#9ca089] transition"><Instagram className="w-5 h-5" /></a>
             </div>
           </div>
         </footer>
@@ -395,7 +423,7 @@ export default function Portfolio() {
         {showBackToTop && (
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="fixed bottom-8 right-8 bg-yellow-400 text-gray-900 p-3 rounded-full shadow-lg hover:bg-yellow-500 transition-all duration-300 animate-bounce z-50"
+            className="fixed bottom-8 right-8 bg-[#394931] dark:bg-[#5d624c] text-white dark:text-[#E1DBCB] p-3 rounded-full shadow-lg hover:bg-[#5d624c] dark:hover:bg-[#868b6b] transition-all duration-300 animate-bounce z-50"
           >
             <ArrowUp className="w-6 h-6" />
           </button>
@@ -404,26 +432,26 @@ export default function Portfolio() {
         {/* Project Modal */}
         {selectedProject && (
           <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={() => setSelectedProject(null)}>
-            <div className="bg-white dark:bg-gray-900 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="bg-white dark:bg-[#2D2D2D] rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
               <div className="relative">
                 <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-64 object-cover rounded-t-2xl" />
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="absolute top-4 right-4 bg-white dark:bg-gray-800 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+                  className="absolute top-4 right-4 bg-white dark:bg-[#394931] p-2 rounded-full hover:bg-gray-100 dark:hover:bg-[#5d624c] transition"
                 >
-                  <X className="w-6 h-6 text-gray-900 dark:text-white" />
+                  <X className="w-6 h-6 text-gray-900 dark:text-[#E1DBCB]" />
                 </button>
               </div>
               <div className="p-8">
-                <span className="text-yellow-500 text-sm font-semibold">{selectedProject.category}</span>
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mt-2">{selectedProject.title}</h2>
-                <p className="text-gray-600 dark:text-gray-400 mt-4 leading-relaxed">{selectedProject.description}</p>
+                <span className="text-[#394931] dark:text-[#9ca089] text-sm font-semibold">{selectedProject.category}</span>
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-[#E1DBCB] mt-2">{selectedProject.title}</h2>
+                <p className="text-gray-600 dark:text-[#c5beab] mt-4 leading-relaxed">{selectedProject.description}</p>
                 
                 <div className="mt-6">
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Technologies Used:</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-[#E1DBCB] mb-3">Technologies Used:</h3>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.tech.map((tech, index) => (
-                      <span key={index} className="px-4 py-2 bg-yellow-400/20 text-yellow-600 dark:text-yellow-400 rounded-full text-sm font-semibold">
+                      <span key={index} className="px-4 py-2 bg-[#394931]/20 dark:bg-[#5d624c]/30 text-[#394931] dark:text-[#9ca089] rounded-full text-sm font-semibold">
                         {tech}
                       </span>
                     ))}
@@ -431,11 +459,11 @@ export default function Portfolio() {
                 </div>
 
                 <div className="flex items-center space-x-4 mt-8">
-                  <a href={selectedProject.liveUrl} className="flex items-center space-x-2 bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg hover:bg-yellow-500 transition font-semibold">
+                  <a href={selectedProject.liveUrl} className="flex items-center space-x-2 bg-[#394931] dark:bg-[#5d624c] text-white dark:text-[#E1DBCB] px-6 py-3 rounded-lg hover:bg-[#5d624c] dark:hover:bg-[#868b6b] transition font-semibold">
                     <ExternalLink className="w-5 h-5" />
                     <span>View Live</span>
                   </a>
-                  <a href={selectedProject.githubUrl} className="flex items-center space-x-2 bg-gray-900 dark:bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 transition font-semibold">
+                  <a href={selectedProject.githubUrl} className="flex items-center space-x-2 bg-gray-900 dark:bg-[#394931] text-white dark:text-[#E1DBCB] px-6 py-3 rounded-lg hover:bg-gray-800 dark:hover:bg-[#5d624c] transition font-semibold">
                     <Github className="w-5 h-5" />
                     <span>View Code</span>
                   </a>
@@ -446,5 +474,18 @@ export default function Portfolio() {
         )}
       </div>
     </div>
+  );
+}
+
+// NavLink component with hover effect
+function NavLink({ children, onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      className="relative text-gray-700 dark:text-[#E1DBCB] hover:text-[#394931] dark:hover:text-[#9ca089] transition group"
+    >
+      {children}
+      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#394931] dark:bg-[#9ca089] group-hover:w-full transition-all duration-300"></span>
+    </button>
   );
 }
