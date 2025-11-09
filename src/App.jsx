@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Download, Mail, Github, Linkedin, Twitter, Instagram, ArrowUp, X, ExternalLink, Menu } from 'lucide-react';
+import { Moon, Sun, Download, Mail, Github, Facebook, Twitter, Instagram, ArrowUp, X, ExternalLink, Menu } from 'lucide-react';
 
 export default function Portfolio() {
   const [darkMode, setDarkMode] = useState(false);
@@ -7,6 +7,8 @@ export default function Portfolio() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [typedText, setTypedText] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showCertificates, setShowCertificates] = useState(false);
+  const [currentCertIndex, setCurrentCertIndex] = useState(0);
   const titles = ['Web Developer', 'UI/UX Designer', 'IT Student', 'Front-End Developer'];
   const [titleIndex, setTitleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -48,6 +50,33 @@ export default function Portfolio() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setMenuOpen(false);
   };
+
+  // Certificate data
+  const certificates = [
+    {
+      id: 1,
+      title: 'Cisco Networking Certificate 1',
+      image: '/Cert1.png',  // ← Replace with your actual file
+      description: 'Completed comprehensive training in network fundamentals.',
+      date: '2024'
+    },
+    {
+      id: 2,
+      title: 'Cisco Networking Certificate 2',
+      image: '/Cert2.png',  // ← Replace with your actual file
+      description: 'Advanced networking certification covering switching.',
+      date: '2024'
+    },
+  ];
+
+  const nextCertificate = () => {
+    setCurrentCertIndex((prev) => (prev + 1) % certificates.length);
+  };
+
+  const prevCertificate = () => {
+    setCurrentCertIndex((prev) => (prev - 1 + certificates.length) % certificates.length);
+  };
+
 
   const projects = [
     {
@@ -131,16 +160,7 @@ export default function Portfolio() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center space-x-3">
-                <img 
-                  src="/logo.png" 
-                  alt="Pacificode Logo" 
-                  className="w-10 h-10 object-contain"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.nextSibling.style.marginLeft = '0';
-                  }}
-                />
-                <span className="text-xl font-bold text-gray-900 dark:text-[#E1DBCB]">PACIFICODE</span>
+                <span className="text-xl font-bold text-gray-900 dark:text-[#E1DBCB]">PacifiCode</span>
               </div>
 
               {/* Desktop Menu */}
@@ -157,12 +177,6 @@ export default function Portfolio() {
                     className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-[#394931] transition"
                   >
                     {darkMode ? <Sun className="w-5 h-5 text-[#9ca089]" /> : <Moon className="w-5 h-5 text-gray-700" />}
-                  </button>
-                  <button 
-                    onClick={downloadCV}
-                    className="bg-[#394931] dark:bg-[#5d624c] text-white dark:text-[#E1DBCB] px-4 py-2 rounded-lg hover:bg-[#5d624c] dark:hover:bg-[#868b6b] transition font-semibold"
-                  >
-                    Contact Me
                   </button>
                 </div>
               </div>
@@ -194,13 +208,12 @@ export default function Portfolio() {
         </nav>
 
         {/* Hero Section */}
-        <section id="home" className="pt-24 pb-12 md:pt-32 md:pb-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="home" className="pt-24 pb-12 md:pt-32 md:pb-20 bg-[#f5f5ec] dark:bg-[#2D2D2D]">          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
                 <div className="space-y-2">
                   <h2 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-[#E1DBCB]">
-                    Hi! I'm Rhea Mae -
+                    Hi! I'm Rhea Mae
                   </h2>
                   <h3 className="text-3xl md:text-4xl font-bold text-[#394931] dark:text-[#9ca089]">
                     {typedText}
@@ -232,26 +245,26 @@ export default function Portfolio() {
                     <Download className="w-5 h-5" />
                     <span>Download CV</span>
                   </button>
-                  <button 
-                    onClick={() => scrollToSection('contact')} 
-                    className="bg-gray-900 dark:bg-[#394931] text-white dark:text-[#E1DBCB] px-6 py-3 rounded-lg hover:bg-gray-800 dark:hover:bg-[#5d624c] transition font-semibold"
-                  >
-                    Hire Me Now
+                  <button onClick={() => setShowCertificates(true)}  // ← CHANGED THIS
+                  className="bg-[#394931] dark:bg-[#5d624c] text-white dark:text-[#E1DBCB] px-6 py-3 rounded-lg hover:bg-[#5d624c] dark:hover:bg-[#868b6b] transition font-semibold">
+                  View Certificates  {/* ← CHANGED THIS */}
                   </button>
                 </div>
 
                 <div className="flex items-center space-x-4 pt-4">
-                  <a href="#" className="text-gray-600 dark:text-[#c5beab] hover:text-[#394931] dark:hover:text-[#9ca089] transition">
+                  <a href="https://x.com/reya_emaypi" className="text-gray-600 dark:text-[#c5beab] hover:text-[#394931] dark:hover:text-[#9ca089] transition">
                     <Twitter className="w-5 h-5" />
                   </a>
-                  <a href="#" className="text-gray-600 dark:text-[#c5beab] hover:text-[#394931] dark:hover:text-[#9ca089] transition">
-                    <Linkedin className="w-5 h-5" />
+                  <a href="https://www.facebook.com/share/1AMGejFcPN/" className="text-gray-600 dark:text-[#c5beab] hover:text-[#394931] dark:hover:text-[#9ca089] transition">
+                    <Facebook className="w-5 h-5" />
                   </a>
-                  <a href="#" className="text-gray-600 dark:text-[#c5beab] hover:text-[#394931] dark:hover:text-[#9ca089] transition">
-                    <Github className="w-5 h-5" />
+                  <a href="https://github.com/reeyahPacifiCode" 
+                  className="text-gray-600 dark:text-[#c5beab] hover:text-[#394931] dark:hover:text-[#9ca089] transition">
+                  <Github className="w-5 h-5" />
                   </a>
-                  <a href="#" className="text-gray-600 dark:text-[#c5beab] hover:text-[#394931] dark:hover:text-[#9ca089] transition">
-                    <Instagram className="w-5 h-5" />
+                  <a href="https://www.instagram.com/its_supercalifrajilistic?igsh=YWp6bHBmbnlzbXhz" 
+                  className="text-gray-600 dark:text-[#c5beab] hover:text-[#394931] dark:hover:text-[#9ca089] transition">
+                  <Instagram className="w-5 h-5" />
                   </a>
                 </div>
               </div>
@@ -260,8 +273,8 @@ export default function Portfolio() {
                 <div className="absolute inset-0 bg-[#394931] dark:bg-[#5d624c] rounded-full blur-3xl opacity-20"></div>
                 <div className="relative bg-[#9ca089] dark:bg-[#5d624c] rounded-full overflow-hidden aspect-square">
                   <img 
-                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&h=800&fit=crop"
-                    alt="Profile"
+                    src="rhea.jpg"
+                    alt="My Profile"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -411,10 +424,10 @@ export default function Portfolio() {
               Developed with assistance from Claude AI
             </p>
             <div className="flex items-center justify-center space-x-4 mt-4">
-              <a href="#" className="text-gray-400 hover:text-[#9ca089] transition"><Twitter className="w-5 h-5" /></a>
-              <a href="#" className="text-gray-400 hover:text-[#9ca089] transition"><Linkedin className="w-5 h-5" /></a>
-              <a href="#" className="text-gray-400 hover:text-[#9ca089] transition"><Github className="w-5 h-5" /></a>
-              <a href="#" className="text-gray-400 hover:text-[#9ca089] transition"><Instagram className="w-5 h-5" /></a>
+              <a href="https://x.com/reya_emaypi" className="text-gray-400 hover:text-[#9ca089] transition"><Twitter className="w-5 h-5" /></a>
+              <a href="https://www.facebook.com/share/1AMGejFcPN/" className="text-gray-400 hover:text-[#9ca089] transition"><Facebook className="w-5 h-5" /></a>
+              <a href="https://github.com/reeyahPacifiCode" className="text-gray-400 hover:text-[#9ca089] transition"><Github className="w-5 h-5" /></a>
+              <a href="https://www.instagram.com/its_supercalifrajilistic?igsh=YWp6bHBmbnlzbXhz" className="text-gray-400 hover:text-[#9ca089] transition"><Instagram className="w-5 h-5" /></a>
             </div>
           </div>
         </footer>
@@ -427,6 +440,82 @@ export default function Portfolio() {
           >
             <ArrowUp className="w-6 h-6" />
           </button>
+        )}
+
+        {/* Certificate Modal */}
+        {showCertificates && (
+          <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4" onClick={() => setShowCertificates(false)}>
+            <div className="bg-white dark:bg-[#2D2D2D] rounded-2xl max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
+              <div className="relative">
+                {/* Close Button */}
+                <button
+                  onClick={() => setShowCertificates(false)}
+                  className="absolute top-4 right-4 bg-white dark:bg-[#394931] p-2 rounded-full hover:bg-gray-100 dark:hover:bg-[#5d624c] transition z-10"
+                >
+                  <X className="w-6 h-6 text-gray-900 dark:text-[#E1DBCB]" />
+                </button>
+
+                {/* Image Container */}
+                <div className="relative">
+                  <img 
+                    src={certificates[currentCertIndex].image} 
+                    alt={certificates[currentCertIndex].title}
+                    className="w-full h-96 object-contain bg-gray-100 dark:bg-[#394931] rounded-t-2xl"
+                  />
+                  
+                  {/* Left Arrow */}
+                  <button
+                    onClick={prevCertificate}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white dark:bg-[#394931] p-3 rounded-full hover:bg-gray-100 dark:hover:bg-[#5d624c] transition shadow-lg"
+                  >
+                    <svg className="w-6 h-6 text-gray-900 dark:text-[#E1DBCB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  
+                  {/* Right Arrow */}
+                  <button
+                    onClick={nextCertificate}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white dark:bg-[#394931] p-3 rounded-full hover:bg-gray-100 dark:hover:bg-[#5d624c] transition shadow-lg"
+                  >
+                    <svg className="w-6 h-6 text-gray-900 dark:text-[#E1DBCB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Description */}
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-[#E1DBCB]">
+                      {certificates[currentCertIndex].title}
+                    </h3>
+                    <span className="text-sm text-gray-500 dark:text-[#9ca089]">
+                      {certificates[currentCertIndex].date}
+                    </span>
+                  </div>
+                  <p className="text-gray-600 dark:text-[#c5beab] leading-relaxed">
+                    {certificates[currentCertIndex].description}
+                  </p>
+                  
+                  {/* Progress Dots */}
+                  <div className="flex items-center justify-center space-x-2 mt-6">
+                    {certificates.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentCertIndex(index)}
+                        className={`h-2 rounded-full transition-all ${
+                          index === currentCertIndex 
+                            ? 'w-8 bg-[#394931] dark:bg-[#9ca089]' 
+                            : 'w-2 bg-gray-300 dark:bg-[#5d624c]'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         )}
 
         {/* Project Modal */}
