@@ -1,0 +1,17 @@
+:root {
+  --color-primary: #394931;
+  --color-accent: #9ca089;
+  --color-bg-dark: #2D2D2D;
+  --color-text-dark: #E1DBCB;
+}
+
+/* Smooth transition for dark mode */
+.dark {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Example utility override */
+.dark a:hover {
+  color: var(--color-accent);
+}
+
