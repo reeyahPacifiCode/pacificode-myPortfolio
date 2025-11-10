@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import WorksPage from './components/WorksPage';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTopButton from './components/BackToTopButton';
@@ -17,7 +19,6 @@ export default function App() {
   const [showCertificates, setShowCertificates] = useState(false);
   const [currentCertIndex, setCurrentCertIndex] = useState(0);
 
-  // scroll detection for back-to-top
   useEffect(() => {
     const handleScroll = () => setShowBackToTop(window.scrollY > 300);
     window.addEventListener('scroll', handleScroll);
@@ -25,25 +26,66 @@ export default function App() {
   }, []);
 
   return (
-    <div className={darkMode ? 'dark' : ''}>
-      <div className="min-h-screen bg-white dark:bg-[#2D2D2D] transition-colors duration-300">
-        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
-        <Hero setShowCertificates={setShowCertificates} />
-        <About />
-        <Skills />
-        <Projects setSelectedProject={setSelectedProject} />
-        <Contact />
-        <Footer />
+    <Router>
+      <div className={darkMode ? 'dark' : ''}>
+        <div className="min-h-screen bg-white dark:bg-[#2D2D2D] transition-colors duration-300">
+          <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+          <Routes>
+            {/* ✅ HOME PAGE */}
+            <Route
+              path="/"
+              element={
+                <>
+                  <Hero setShowCertificates={setShowCertificates} />
+                  <About />
+                  <Skills />
+                  <ProjectsWrapper setSelectedProject={setSelectedProject} />
+                  <Contact />
+                  <Footer />
+                </>
+              }
+            />
 
-        <BackToTopButton show={showBackToTop} />
-        <CertificateModal
-          show={showCertificates}
-          setShow={setShowCertificates}
-          currentCertIndex={currentCertIndex}
-          setCurrentCertIndex={setCurrentCertIndex}
-        />
-        <ProjectModal selectedProject={selectedProject} setSelectedProject={setSelectedProject} />
+            {/* ✅ WORKS PAGE */}
+            <Route
+              path="/works"
+              element={<WorksWrapper setSelectedProject={setSelectedProject} />}
+            />
+          </Routes>
+
+          <BackToTopButton show={showBackToTop} />
+          <CertificateModal
+            show={showCertificates}
+            setShow={setShowCertificates}
+            currentCertIndex={currentCertIndex}
+            setCurrentCertIndex={setCurrentCertIndex}
+          />
+          <ProjectModal
+            selectedProject={selectedProject}
+            setSelectedProject={setSelectedProject}
+          />
+        </div>
       </div>
-    </div>
+    </Router>
   );
+}
+
+/* ✅ Wrappers for navigation logic */
+function ProjectsWrapper({ setSelectedProject }) {
+  const navigate = useNavigate();
+  const navigateToWorks = () => navigate('/works');
+
+  return (
+    <Projects
+      setSelectedProject={setSelectedProject}
+      navigateToWorks={navigateToWorks}
+    />
+  );
+}
+
+function WorksWrapper({ setSelectedProject }) {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+  return <WorksPage setSelectedProject={setSelectedProject} />;
 }
