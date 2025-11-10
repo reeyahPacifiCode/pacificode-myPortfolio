@@ -21,8 +21,8 @@ export default function Navbar({ darkMode, setDarkMode }) {
           <div className="hidden md:flex items-center space-x-8">
             <NavLink onClick={() => scrollToSection('home')}>Home</NavLink>
             <NavLink onClick={() => scrollToSection('about')}>About</NavLink>
-            <NavLink onClick={() => scrollToSection('projects')}>Projects</NavLink>
             <NavLink onClick={() => scrollToSection('skills')}>Skills</NavLink>
+            <NavLink onClick={() => scrollToSection('projects')}>Projects</NavLink>
             <NavLink onClick={() => scrollToSection('contact')}>Contact</NavLink>
 
             <button
