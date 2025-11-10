@@ -46,11 +46,10 @@ export default function Contact() {
       from_name: formData.name,
       from_email: formData.email,
       message: formData.message,
-      to_name: 'Your Name', // Optional: add this to your template
+      to_name: 'Your Name',
     };
 
     try {
-      // Using fetch API instead of emailjs library for better error handling
       const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST',
         headers: {
@@ -81,22 +80,22 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-[#f5f5ec] relative">
+    <section id="contact" className="py-20 bg-[#f5f5ec] dark:bg-[#2D2D2D] relative transition-colors duration-300">
       {/* Notification Modal */}
       {notification.show && (
         <div className="fixed top-4 right-4 z-50 animate-slideIn">
           <div className={`flex items-center gap-3 px-6 py-4 rounded-lg shadow-2xl ${
             notification.type === 'success' 
-              ? 'bg-green-50 border-2 border-green-500' 
-              : 'bg-red-50 border-2 border-red-500'
+              ? 'bg-green-50 dark:bg-[#394931] border-2 border-green-500 dark:border-[#9ca089]' 
+              : 'bg-red-50 dark:bg-[#5d624c] border-2 border-red-500 dark:border-red-400'
           }`}>
             {notification.type === 'success' ? (
-              <CheckCircle className="w-6 h-6 text-green-600" />
+              <CheckCircle className="w-6 h-6 text-green-600 dark:text-[#9ca089]" />
             ) : (
-              <AlertCircle className="w-6 h-6 text-red-600" />
+              <AlertCircle className="w-6 h-6 text-red-600 dark:text-red-400" />
             )}
             <p className={`font-medium ${
-              notification.type === 'success' ? 'text-green-800' : 'text-red-800'
+              notification.type === 'success' ? 'text-green-800 dark:text-[#E1DBCB]' : 'text-red-800 dark:text-[#E1DBCB]'
             }`}>
               {notification.message}
             </p>
@@ -105,7 +104,7 @@ export default function Contact() {
               className="ml-2 hover:opacity-70 transition"
             >
               <X className={`w-5 h-5 ${
-                notification.type === 'success' ? 'text-green-600' : 'text-red-600'
+                notification.type === 'success' ? 'text-green-600 dark:text-[#9ca089]' : 'text-red-600 dark:text-red-400'
               }`} />
             </button>
           </div>
@@ -114,15 +113,15 @@ export default function Contact() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-[#E1DBCB] mb-4">
             Get In Touch
           </h2>
-          <div className="w-20 h-1 bg-[#394931] mx-auto"></div>
+          <div className="w-20 h-1 bg-[#394931] dark:bg-[#9ca089] mx-auto"></div>
         </div>
         <div className="max-w-2xl mx-auto">
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-[#c5beab] mb-2">
                 Name
               </label>
               <input
@@ -131,11 +130,11 @@ export default function Contact() {
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 disabled={isLoading}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-[#394931] focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-[#5d624c] bg-white dark:bg-[#394931] text-gray-900 dark:text-[#E1DBCB] placeholder:text-gray-400 dark:placeholder:text-[#868b6b] focus:ring-2 focus:ring-[#394931] dark:focus:ring-[#9ca089] focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-[#c5beab] mb-2">
                 Email
               </label>
               <input
@@ -144,11 +143,11 @@ export default function Contact() {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 disabled={isLoading}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-[#394931] focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-[#5d624c] bg-white dark:bg-[#394931] text-gray-900 dark:text-[#E1DBCB] placeholder:text-gray-400 dark:placeholder:text-[#868b6b] focus:ring-2 focus:ring-[#394931] dark:focus:ring-[#9ca089] focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-[#c5beab] mb-2">
                 Message
               </label>
               <textarea
@@ -157,17 +156,17 @@ export default function Contact() {
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 rows={5}
                 disabled={isLoading}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-[#394931] focus:border-transparent outline-none transition resize-none disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-[#5d624c] bg-white dark:bg-[#394931] text-gray-900 dark:text-[#E1DBCB] placeholder:text-gray-400 dark:placeholder:text-[#868b6b] focus:ring-2 focus:ring-[#394931] dark:focus:ring-[#9ca089] focus:border-transparent outline-none transition resize-none disabled:opacity-50 disabled:cursor-not-allowed"
               ></textarea>
             </div>
             <button
               onClick={handleSubmit}
               disabled={isLoading}
-              className="w-full bg-[#394931] text-white py-3 rounded-lg hover:bg-[#5d624c] transition font-semibold flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full bg-[#394931] dark:bg-[#5d624c] text-white dark:text-[#E1DBCB] py-3 rounded-lg hover:bg-[#5d624c] dark:hover:bg-[#868b6b] transition font-semibold flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98]"
             >
               {isLoading ? (
                 <>
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-5 h-5 border-2 border-white dark:border-[#E1DBCB] border-t-transparent rounded-full animate-spin"></div>
                   <span>Sending...</span>
                 </>
               ) : (
@@ -199,6 +198,13 @@ export default function Contact() {
 
         #contact input:focus, #contact textarea:focus {
           transform: scale(1.01);
+        }
+
+        .dark #contact input:focus, .dark #contact textarea:focus {
+          box-shadow: 0 0 0 3px rgba(156, 160, 137, 0.2);
+        }
+
+        #contact input:not(.dark input):focus, #contact textarea:not(.dark textarea):focus {
           box-shadow: 0 0 0 3px rgba(57, 73, 49, 0.1);
         }
 
