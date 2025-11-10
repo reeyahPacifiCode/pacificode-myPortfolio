@@ -27,7 +27,7 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
       onClick={closeModal}
     >
       <div
-        className="bg-white dark:bg-[#2D2D2D] rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl"
+        className="bg-white dark:bg-[#2D2D2D] rounded-2xl max-w-6xl w-full h-[90vh] overflow-hidden relative shadow-2xl flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -39,8 +39,8 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
         </button>
 
         {/* Image Gallery */}
-        <div className="relative">
-          <div className="relative h-[500px] bg-[#E1DBCB] dark:bg-[#394931]">
+        <div className="relative flex-shrink-0">
+          <div className="relative h-[380px] bg-[#E1DBCB] dark:bg-[#394931]">
             <img
               src={selectedProject.images[currentImageIndex]}
               alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
@@ -75,19 +75,19 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
             )}
 
             {/* Image Counter */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold">
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-sm text-white px-4 py-1.5 rounded-full text-xs font-semibold">
               {currentImageIndex + 1} / {selectedProject.images.length}
             </div>
           </div>
 
           {/* Thumbnail Strip */}
           {selectedProject.images.length > 1 && (
-            <div className="flex gap-2 p-4 overflow-x-auto bg-[#f5f5ec] dark:bg-[#394931]/30 custom-scrollbar">
+            <div className="flex gap-2 p-3 overflow-x-auto bg-[#f5f5ec] dark:bg-[#394931]/30 custom-scrollbar">
               {selectedProject.images.map((img, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCurrentImageIndex(idx)}
-                  className={`flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition ${
+                  className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition ${
                     idx === currentImageIndex
                       ? 'border-[#394931] dark:border-[#9ca089] scale-105 shadow-lg'
                       : 'border-transparent opacity-60 hover:opacity-100 hover:border-[#868b6b]'
@@ -101,7 +101,7 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
         </div>
 
         {/* Project Details */}
-        <div className="p-8">
+        <div className="flex-grow p-8 overflow-y-auto">
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span className="text-[#394931] dark:text-[#9ca089] text-sm font-semibold px-4 py-1.5 bg-[#394931]/10 dark:bg-[#9ca089]/10 rounded-full">
               {selectedProject.category}
@@ -116,31 +116,15 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
             </span>
           </div>
 
-          <h2 className="text-4xl font-bold text-[#2D2D2D] dark:text-[#E1DBCB] mb-4">
+          <h2 className="text-3xl font-bold text-[#2D2D2D] dark:text-[#E1DBCB] mb-3">
             {selectedProject.title}
           </h2>
 
-          <p className="text-[#5d624c] dark:text-[#c5beab] leading-relaxed text-lg mb-8">
+          <p className="text-[#5d624c] dark:text-[#c5beab] leading-relaxed text-base mb-6">
             {selectedProject.description}
           </p>
 
-          {/* Technologies */}
-          <div className="mb-8">
-            <h3 className="font-semibold text-[#2D2D2D] dark:text-[#E1DBCB] mb-4 flex items-center gap-2 text-lg">
-              <span className="w-1 h-6 bg-[#394931] dark:bg-[#9ca089] rounded"></span>
-              Technologies Used
-            </h3>
-            <div className="flex flex-wrap gap-3">
-              {selectedProject.tech.map((tech, index) => (
-                <span
-                  key={index}
-                  className="px-4 py-2 bg-[#E1DBCB] dark:bg-[#5d624c]/30 text-[#394931] dark:text-[#9ca089] rounded-lg text-sm font-semibold border border-[#394931]/20 dark:border-[#9ca089]/20 hover:scale-105 transition-transform"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
+         
 
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-4">
@@ -148,18 +132,18 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
               href={selectedProject.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-[#2D2D2D] dark:bg-[#394931] text-[#E1DBCB] px-8 py-3 rounded-lg hover:bg-[#394931] dark:hover:bg-[#5d624c] transition font-semibold shadow-lg transform hover:scale-105"
+              className="flex items-center gap-2 bg-[#2D2D2D] dark:bg-[#394931] text-[#E1DBCB] px-6 py-2.5 rounded-lg hover:bg-[#394931] dark:hover:bg-[#5d624c] transition font-semibold shadow-md transform hover:scale-105"
             >
               <Github className="w-5 h-5" />
               <span>View on GitHub</span>
             </a>
-            
+
             {selectedProject.liveUrl && (
               <a
                 href={selectedProject.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-[#394931] dark:bg-[#5d624c] text-[#E1DBCB] px-8 py-3 rounded-lg hover:bg-[#5d624c] dark:hover:bg-[#868b6b] transition font-semibold shadow-lg transform hover:scale-105"
+                className="flex items-center gap-2 bg-[#394931] dark:bg-[#5d624c] text-[#E1DBCB] px-6 py-2.5 rounded-lg hover:bg-[#5d624c] dark:hover:bg-[#868b6b] transition font-semibold shadow-md transform hover:scale-105"
               >
                 <ExternalLink className="w-5 h-5" />
                 <span>View Live Demo</span>
@@ -181,7 +165,7 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
           >
             <X className="w-6 h-6 text-white" />
           </button>
-          
+
           <img
             src={selectedProject.images[currentImageIndex]}
             alt="Fullscreen view"
@@ -235,25 +219,14 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
         }
 
         .custom-scrollbar::-webkit-scrollbar {
-          height: 8px;
+          height: 6px;
         }
-        
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        
         .custom-scrollbar::-webkit-scrollbar-thumb {
           background: #9ca089;
           border-radius: 4px;
         }
-        
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
           background: #868b6b;
-        }
-        
-        .custom-scrollbar {
-          scrollbar-width: thin;
-          scrollbar-color: #9ca089 transparent;
         }
       `}</style>
     </div>

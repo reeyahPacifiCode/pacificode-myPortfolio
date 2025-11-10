@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -29,7 +29,9 @@ export default function App() {
     <Router>
       <div className={darkMode ? 'dark' : ''}>
         <div className="min-h-screen bg-white dark:bg-[#2D2D2D] transition-colors duration-300">
-          <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+          {/* ✅ Conditional Navbar - Hidden on /works page */}
+          <NavbarWrapper darkMode={darkMode} setDarkMode={setDarkMode} />
+          
           <Routes>
             {/* ✅ HOME PAGE */}
             <Route
@@ -45,14 +47,13 @@ export default function App() {
                 </>
               }
             />
-
             {/* ✅ WORKS PAGE */}
             <Route
               path="/works"
-              element={<WorksWrapper setSelectedProject={setSelectedProject} />}
+              element={<WorksWrapper setSelectedProject={setSelectedProject} darkMode={darkMode} />}
             />
           </Routes>
-
+          
           <BackToTopButton show={showBackToTop} />
           <CertificateModal
             show={showCertificates}
@@ -70,11 +71,22 @@ export default function App() {
   );
 }
 
+/* ✅ Navbar Wrapper - Hides on /works page */
+function NavbarWrapper({ darkMode, setDarkMode }) {
+  const location = useLocation();
+  
+  // Hide navbar if on /works page
+  if (location.pathname === '/works') {
+    return null;
+  }
+  
+  return <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />;
+}
+
 /* ✅ Wrappers for navigation logic */
 function ProjectsWrapper({ setSelectedProject }) {
   const navigate = useNavigate();
   const navigateToWorks = () => navigate('/works');
-
   return (
     <Projects
       setSelectedProject={setSelectedProject}
@@ -83,9 +95,9 @@ function ProjectsWrapper({ setSelectedProject }) {
   );
 }
 
-function WorksWrapper({ setSelectedProject }) {
+function WorksWrapper({ setSelectedProject, darkMode }) {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
-  return <WorksPage setSelectedProject={setSelectedProject} />;
+  return <WorksPage setSelectedProject={setSelectedProject} darkMode={darkMode} />;
 }

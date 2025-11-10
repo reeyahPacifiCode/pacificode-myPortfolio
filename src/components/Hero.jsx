@@ -39,7 +39,7 @@ export default function Hero({ setShowCertificates }) {
     <section id="home" className="pt-24 pb-12 md:pt-32 md:pb-20 bg-[#f5f5ec] dark:bg-[#2D2D2D]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
         <div className="space-y-6">
-          <h2 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-[#E1DBCB]">
+          <h2 className="text-5xl md:text-7xl font-bold text-[#2D2D2D] dark:text-[#E1DBCB]">
             Hi! I'm Rhea
           </h2>
           <h3 className="text-3xl md:text-4xl font-bold text-[#394931] dark:text-[#9ca089]">
@@ -54,7 +54,7 @@ export default function Hero({ setShowCertificates }) {
           <div className="flex space-x-4 pt-4">
             <button
               onClick={downloadCV}
-              className="flex items-center space-x-2 bg-[#394931] dark:bg-[#5d624c] text-white px-6 py-3 rounded-lg hover:bg-[#5d624c] transition font-semibold"
+              className="flex items-center space-x-2 bg-[#394931] dark:bg-[#5d624c] text-[#f5f5ec] px-6 py-3 rounded-lg hover:bg-[#5d624c] transition font-semibold"
             >
               <Download className="w-5 h-5" /> <span>Download CV</span>
             </button>
@@ -83,8 +83,8 @@ export default function Hero({ setShowCertificates }) {
         </div>
 
         <div className="relative">
-          <div className="absolute inset-0 bg-[#394931] dark:bg-[#5d624c] rounded-full blur-3xl opacity-20"></div>
-          <div className="relative bg-[#9ca089] dark:bg-[#5d624c] rounded-full overflow-hidden aspect-square">
+           <div className="absolute inset-0 bg-[#394931] dark:bg-[#5d624c] rounded-full blur-3xl opacity-20"></div>
+            <div className="relative bg-[#9ca089] dark:bg-[#5d624c] rounded-full overflow-hidden aspect-square">
             <img src="rhea.jpg" alt="My Profile" className="w-full h-full object-cover" />
           </div>
         </div>
