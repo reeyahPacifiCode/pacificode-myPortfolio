@@ -130,7 +130,7 @@ export default function Contact() {
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 disabled={isLoading}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-[#5d624c] bg-white dark:bg-[#394931] text-gray-900 dark:text-[#E1DBCB] placeholder:text-gray-400 dark:placeholder:text-[#868b6b] focus:ring-2 focus:ring-[#394931] dark:focus:ring-[#9ca089] focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-[#5d624c] bg-white dark:bg-[#4a5851] text-gray-900 dark:text-[#E1DBCB] placeholder:text-gray-400 dark:placeholder:text-[#868b6b] focus:ring-2 focus:ring-[#394931] dark:focus:ring-[#9ca089] focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
             <div>
@@ -143,7 +143,7 @@ export default function Contact() {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 disabled={isLoading}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-[#5d624c] bg-white dark:bg-[#394931] text-gray-900 dark:text-[#E1DBCB] placeholder:text-gray-400 dark:placeholder:text-[#868b6b] focus:ring-2 focus:ring-[#394931] dark:focus:ring-[#9ca089] focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-[#5d624c] bg-white dark:bg-[#4a5851] text-gray-900 dark:text-[#E1DBCB] placeholder:text-gray-400 dark:placeholder:text-[#868b6b] focus:ring-2 focus:ring-[#394931] dark:focus:ring-[#9ca089] focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
             <div>
@@ -156,13 +156,13 @@ export default function Contact() {
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 rows={5}
                 disabled={isLoading}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-[#5d624c] bg-white dark:bg-[#394931] text-gray-900 dark:text-[#E1DBCB] placeholder:text-gray-400 dark:placeholder:text-[#868b6b] focus:ring-2 focus:ring-[#394931] dark:focus:ring-[#9ca089] focus:border-transparent outline-none transition resize-none disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-[#5d624c] bg-white dark:bg-[#4a5851] text-gray-900 dark:text-[#E1DBCB] placeholder:text-gray-400 dark:placeholder:text-[#868b6b] focus:ring-2 focus:ring-[#394931] dark:focus:ring-[#9ca089] focus:border-transparent outline-none transition resize-none disabled:opacity-50 disabled:cursor-not-allowed"
               ></textarea>
             </div>
             <button
               onClick={handleSubmit}
               disabled={isLoading}
-              className="w-full bg-[#394931] dark:bg-[#5d624c] text-white dark:text-[#E1DBCB] py-3 rounded-lg hover:bg-[#5d624c] dark:hover:bg-[#868b6b] transition font-semibold flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full bg-[#394931] dark:bg-[#5d624c] text-white dark:text-[#E1DBCB] py-3 rounded-lg hover:bg-[#4a5851] dark:hover:bg-[#868b6b] transition font-semibold flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98]"
             >
               {isLoading ? (
                 <>
