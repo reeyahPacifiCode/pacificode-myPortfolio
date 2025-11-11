@@ -28,10 +28,18 @@ export default function Contact() {
       return;
     }
 
-    // Email validation
+     // Email validation - Must have @ symbol and proper format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    // Check if email contains @
+    if (!formData.email.includes('@')) {
+      showNotification('error', 'Email must contain @ symbol (e.g., example@gmail.com)');
+      return;
+    }
+    
+    // Check complete email format
     if (!emailRegex.test(formData.email)) {
-      showNotification('error', 'Please enter a valid email address');
+      showNotification('error', 'Please enter a valid email address (e.g., example@gmail.com)');
       return;
     }
 
@@ -130,7 +138,7 @@ export default function Contact() {
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 disabled={isLoading}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#4a5851] dark:text-[#f5f5ec] placeholder:text-gray-400 dark:placeholder:text-[#9ca089] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652] focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#9ca089] dark:text-[#2D2D2D] placeholder:text-gray-400 dark:placeholder:text-[#5d624c] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652] focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
             <div>
@@ -143,7 +151,7 @@ export default function Contact() {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 disabled={isLoading}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#4a5851] dark:text-[#f5f5ec] placeholder:text-gray-400 dark:placeholder:text-[#9ca089] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652]  focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#9ca089] dark:text-[#2D2D2D] placeholder:text-gray-400 dark:placeholder:text-[#5d624c] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652]  focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
             <div>
@@ -156,7 +164,7 @@ export default function Contact() {
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 rows={5}
                 disabled={isLoading}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#4a5851] dark:text-[#f5f5ec] placeholder:text-gray-400 dark:placeholder:text-[#9ca089] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652]  focus:border-transparent outline-none transition resize-none disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#9ca089] dark:text-[#2D2D2D] placeholder:text-gray-400 dark:placeholder:text-[#5d624c] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652]  focus:border-transparent outline-none transition resize-none disabled:opacity-50 disabled:cursor-not-allowed"
               ></textarea>
             </div>
             <button

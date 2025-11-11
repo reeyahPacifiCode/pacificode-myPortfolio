@@ -57,22 +57,22 @@ export default function Hero({ setShowCertificates }) {
           {/* Download CV */}
             <button
               onClick={downloadCV}
-              className="flex items-center space-x-2 border-2 border-[#394931] dark:border-[#9ca089] text-[#394931] dark:text-[#9ca089] px-4 py-2 rounded-md transition font-semibold relative overflow-hidden group text-sm"
+              className="inline-flex items-center gap-2 border-2 border-[#394931] dark:border-[#9ca089] text-[#394931] dark:text-[#9ca089] px-3 py-2 md:px-4 md:py-2 rounded-md transition font-semibold relative overflow-hidden group text-md md:text-base leading-none whitespace-nowrap"
             >
-              <span className="absolute inset-0 bg-[#394931] dark:bg-[#5d624c] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></span>
-              <Download className="w-4 h-4 relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-300" />
+              <span className="absolute inset-0 bg-[#394931] dark:bg-[#5d624c] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out pointer-events-none"></span>
+              <Download className="w-4 h-4 md:w-5 md:h-5 relative z-10 block group-hover:text-[#f5f5ec] transition-colors duration-300" />
               <span className="relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-300">Download CV</span>
             </button>
           {/* View Certificates */}
-            <button
+           <button
               onClick={() => setShowCertificates(true)}
-              className="flex items-center space-x-2 border-2 border-[#394931] dark:border-[#9ca089] text-[#394931] dark:text-[#9ca089] px-4 py-2 rounded-md transition font-semibold relative overflow-hidden group text-sm"
+              className="inline-flex items-center gap-2 border-2 border-[#394931] dark:border-[#9ca089] text-[#394931] dark:text-[#9ca089] px-3 py-2 md:px-4 md:py-2 rounded-md transition font-semibold relative overflow-hidden group text-md md:text-base leading-none whitespace-nowrap"
             >
-              <span className="absolute inset-0 bg-[#394931] dark:bg-[#5d624c] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></span>
-              <svg className="w-4 h-4 relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              <span className="relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-300">View Certificates</span>
+                <span className="absolute inset-0 bg-[#394931] dark:bg-[#5d624c] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out pointer-events-none"></span>
+                <svg className="w-4 h-4 md:w-5 md:h-5 relative z-10 block group-hover:text-[#f5f5ec] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span className="relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-300">View Cert</span>
             </button>
           </div>
 
@@ -125,7 +125,7 @@ export default function Hero({ setShowCertificates }) {
           <div className="absolute top-12 right-12 w-32 h-32 bg-[#9ca089] dark:bg-[#7a7d6a] rounded-full blur-2xl opacity-20 animate-pulse-slow"></div>
           
           {/* Profile image */}
-          <div className="relative bg-[#9ca089] dark:bg-[#5d624c] rounded-full overflow-hidden aspect-square">
+          <div className="relative bg-[#9ca089] dark:bg-[#5d624c] rounded-full overflow-hidden aspect-square w-full">
             <img src="rhea.jpg" alt="My Profile" className="w-full h-full object-cover" />
           </div>
           

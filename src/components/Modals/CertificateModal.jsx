@@ -45,24 +45,24 @@ export default function CertificateModal({
     <>
       {/* Main Modal */}
       <div
-        className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 animate-fadeIn"
+        className="fixed inset-0 bg-[#5d624c]/70 z-50 flex items-center justify-center p-4 animate-fadeIn"
         onClick={closeModal}
       >
         <div
-          className="bg-white dark:bg-[#2D2D2D] rounded-2xl max-w-6xl w-full h-[90vh] overflow-hidden relative shadow-2xl flex flex-col"
+          className="bg-[#f5f5ec] dark:bg-[#2D2D2D] rounded-2xl max-w-4xl w-full max-h-[85vh] overflow-hidden relative shadow-2xl flex flex-col"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
           <button
             onClick={closeModal}
-            className="absolute top-4 right-4 z-10 bg-white dark:bg-[#394931] p-2 rounded-full hover:bg-[#f5f5ec] dark:hover:bg-[#5d624c] transition shadow-lg"
+            className="absolute top-2 right-2 md:top-3 md:right-3 z-10 bg-white dark:bg-[#394931] p-1.5 md:p-2 rounded-full hover:bg-[#f5f5ec] dark:hover:bg-[#5d624c] transition shadow-lg"
           >
-            <X className="w-6 h-6 text-[#2D2D2D] dark:text-[#E1DBCB]" />
+            <X className="w-5 h-5 md:w-6 md:h-6 text-[#2D2D2D] dark:text-[#E1DBCB]" />
           </button>
 
           {/* Certificate Image Gallery */}
           <div className="relative flex-shrink-0">
-            <div className="relative h-[380px] bg-[#E1DBCB] dark:bg-[#394931]">
+            <div className="relative h-[280px] md:h-[360px] bg-[#DCE2D6]/40 dark:bg-[#394931]/50">
               <img
                 src={certificates[currentCertIndex].image}
                 alt={certificates[currentCertIndex].title}
@@ -71,19 +71,19 @@ export default function CertificateModal({
               />
 
               {/* Certificate Counter */}
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-sm text-white px-4 py-1.5 rounded-full text-xs font-semibold">
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-[#4E5652]/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold">
                 {currentCertIndex + 1} / {certificates.length}
               </div>
             </div>
 
             {/* Thumbnail Strip */}
             {certificates.length > 1 && (
-              <div className="flex gap-2 p-3 overflow-x-auto bg-[#f5f5ec] dark:bg-[#394931]/30 custom-scrollbar">
+              <div className="flex gap-2 p-2 overflow-x-auto bg-[#DCE2D6] dark:bg-[#394931]/30 custom-scrollbar">
                 {certificates.map((cert, idx) => (
                   <button
                     key={idx}
                     onClick={() => setCurrentCertIndex(idx)}
-                    className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition ${
+                    className={`flex-shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-lg overflow-hidden border-2 transition ${
                       idx === currentCertIndex
                         ? 'border-[#394931] dark:border-[#9ca089] scale-105 shadow-lg'
                         : 'border-transparent opacity-60 hover:opacity-100 hover:border-[#868b6b]'
@@ -97,34 +97,34 @@ export default function CertificateModal({
           </div>
 
           {/* Certificate Details */}
-          <div className="flex-grow p-8 overflow-y-auto">
-            <div className="flex items-center gap-3 mb-4 flex-wrap">
-              <span className="text-[#394931] dark:text-[#9ca089] text-sm font-semibold px-4 py-1.5 bg-[#394931]/10 dark:bg-[#9ca089]/10 rounded-full">
+          <div className="flex-grow p-5 md:p-8 overflow-y-auto">
+            <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4 flex-wrap">
+              <span className="text-[#394931] dark:text-[#9ca089] text-sm font-semibold px-3 md:px-4 py-1 md:py-1.5 bg-[#394931]/10 dark:bg-[#9ca089]/10 rounded-full">
                 Certificate
               </span>
-              <span className="text-sm text-[#868b6b] dark:text-[#9ca089] ml-auto">
+              <span className="text-sm text-[#4E5652] dark:text-[#9ca089] ml-auto">
                 {certificates[currentCertIndex].date}
               </span>
             </div>
 
-            <h2 className="text-3xl font-bold text-[#2D2D2D] dark:text-[#E1DBCB] mb-3">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#2D2D2D] dark:text-[#E1DBCB] mb-2 md:mb-3">
               {certificates[currentCertIndex].title}
             </h2>
 
-            <p className="text-[#5d624c] dark:text-[#c5beab] leading-relaxed text-base mb-6">
+            <p className="text-[#4E5652] dark:text-[#c5beab] leading-relaxed text-sm md:text-base mb-4 md:mb-5">
               {certificates[currentCertIndex].description}
             </p>
 
             {/* Progress Dots */}
-            <div className="flex items-center justify-center space-x-2 mt-6">
+            <div className="flex items-center justify-center space-x-2 mt-4 md:mt-5">
               {certificates.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentCertIndex(index)}
                   className={`h-2 rounded-full transition-all ${
                     index === currentCertIndex
-                      ? 'w-8 bg-[#394931] dark:bg-[#9ca089]'
-                      : 'w-2 bg-gray-300 dark:bg-[#5d624c]'
+                      ? 'w-7 md:w-8 bg-[#394931] dark:bg-[#9ca089]'
+                      : 'w-2 bg-[#4E5652]/50 dark:bg-[#5d624c]'
                   }`}
                 />
               ))}

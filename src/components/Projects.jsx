@@ -133,11 +133,16 @@ export default function Projects({ setSelectedProject, navigateToWorks }) {
         <div className="text-center">
           <button
             onClick={navigateToWorks}
-            className="inline-flex items-center space-x-2 border-2 border-[#394931] dark:border-[#E1DBCB] text-[#394931] dark:text-[#E1DBCB] px-4 py-2 rounded-md transition font-semibold relative overflow-hidden group text-sm"
+            className="group inline-flex items-center space-x-2 border-2 border-[#394931] dark:border-[#9ca089] text-[#394931] dark:text-[#9ca089] px-3 py-2 rounded-md transition font-semibold relative overflow-hidden text-sm"
           >
-            <span className="absolute inset-0 bg-[#394931] dark:bg-[#E1DBCB] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
-            <span className="relative z-10 group-hover:text-[#394931] transition-colors duration-300">See More </span>
-            <ArrowRight className="w-4 h-4 relative z-10 group-hover:text-[#394931] transition-colors duration-300" />
+            {/* Animated background */}
+            <span className="absolute inset-0 bg-[#394931] dark:bg-[#868b6b] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+            {/* Text */}
+            <span className="relative z-10 transition-colors duration-300 group-hover:text-[#f5f5ec] dark:group-hover:text-[#f5f5ec]">
+              See More
+            </span>
+            {/* Icon */}
+            <ArrowRight className="w-4 h-4 relative z-10 transition-colors duration-300 group-hover:text-[#f5f5ec] dark:group-hover:text-[#f5f5ec]" />
           </button>
         </div>
       </div>
