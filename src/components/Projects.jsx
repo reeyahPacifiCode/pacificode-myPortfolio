@@ -67,7 +67,7 @@ export default function Projects({ setSelectedProject, navigateToWorks }) {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-[#4a5851]">
+    <section id="projects" className="py-20 bg-[#DCE2D6] dark:bg-[#4a5851]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
@@ -75,27 +75,27 @@ export default function Projects({ setSelectedProject, navigateToWorks }) {
             Projects
           </h2>
           <div className="w-20 h-1 bg-[#394931] dark:bg-[#9ca089] mx-auto"></div>
-          <p className="text-[#5d624c] dark:text-[#c5beab] mt-6 max-w-2xl mx-auto">
+          <p className="text-[#4E5652] dark:text-[#c5beab] mt-6 max-w-2xl mx-auto">
             Explore my featured projects across various technologies and domains
           </p>
         </div>
 
         {/* Featured Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 mb-8 max-w-5xl mx-auto">
           {featuredProjects.map((project) => (
             <div
-              key={project.id}
-              onClick={() => setSelectedProject(project)}
-              className="group bg-white dark:bg-[#2D2D2D] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2"
+            key={project.id}
+            onClick={() => setSelectedProject(project)}
+            className="group bg-[#f5f5ec] dark:bg-[#2D2D2D] rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2"
             >
-              <div className="relative overflow-hidden h-64">
+              <div className="relative overflow-hidden h-60">
                 <img
                   src={project.thumbnail}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
+                  />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-5 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                     <p className="text-sm font-semibold mb-2">Click to view details</p>
                     <div className="flex gap-2 flex-wrap">
                       {project.tech.slice(0, 3).map((tech, idx) => (
@@ -107,19 +107,20 @@ export default function Projects({ setSelectedProject, navigateToWorks }) {
                   </div>
                 </div>
               </div>
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-[#394931] dark:text-[#9ca089] text-sm font-semibold px-3 py-1 bg-[#394931]/10 dark:bg-[#9ca089]/10 rounded-full">
+            
+              <div className="p-5">
+                <div className="flex items-center justify-between mb-2.5">
+                  <span className="text-[#4E5652] dark:text-[#9ca089] text-sm font-semibold px-3 py-1 bg-[#394931]/10 dark:bg-[#9ca089]/10 rounded-full">
                     {project.category}
                   </span>
-                  <span className="text-xs font-semibold text-yellow-600 dark:text-yellow-400">
+                  <span className="text-sm font-semibold text-yellow-600 dark:text-yellow-400">
                     ⭐ Featured
                   </span>
                 </div>
                 <h3 className="text-xl font-bold text-[#2D2D2D] dark:text-[#E1DBCB] mb-2 line-clamp-1">
                   {project.title}
                 </h3>
-                <p className="text-[#5d624c] dark:text-[#c5beab] text-sm line-clamp-2">
+                <p className="text-[#4E5652] dark:text-[#c5beab] text-sm line-clamp-2">
                   {project.description}
                 </p>
               </div>
@@ -127,14 +128,16 @@ export default function Projects({ setSelectedProject, navigateToWorks }) {
           ))}
         </div>
 
-        {/* View All Projects Button */}
+
+        {/* See more Button */}
         <div className="text-center">
           <button
             onClick={navigateToWorks}
-            className="group inline-flex items-center gap-3 bg-[#394931] dark:bg-[#5d624c] text-[#E1DBCB] px-10 py-4 rounded-full hover:bg-[#5d624c] dark:hover:bg-[#868b6b] transition-all duration-300 font-semibold shadow-xl transform hover:scale-105"
+            className="inline-flex items-center space-x-2 border-2 border-[#394931] dark:border-[#E1DBCB] text-[#394931] dark:text-[#E1DBCB] px-4 py-2 rounded-md transition font-semibold relative overflow-hidden group text-sm"
           >
-            <span>View All Projects</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            <span className="absolute inset-0 bg-[#394931] dark:bg-[#E1DBCB] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+            <span className="relative z-10 group-hover:text-[#394931] transition-colors duration-300">See More </span>
+            <ArrowRight className="w-4 h-4 relative z-10 group-hover:text-[#394931] transition-colors duration-300" />
           </button>
         </div>
       </div>

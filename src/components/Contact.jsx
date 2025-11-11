@@ -113,7 +113,7 @@ export default function Contact() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-[#E1DBCB] mb-4">
+          <h2 className="text-4xl font-bold text-[#2D2D2D] dark:text-[#E1DBCB] mb-4">
             Get In Touch
           </h2>
           <div className="w-20 h-1 bg-[#394931] dark:bg-[#9ca089] mx-auto"></div>
@@ -121,33 +121,33 @@ export default function Contact() {
         <div className="max-w-2xl mx-auto">
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-[#c5beab] mb-2">
-                Name
+              <label className="block text-sm font-medium text-[#4E5652] dark:text-[#c5beab] mb-2">
+                Fullname
               </label>
               <input
                 type="text"
-                placeholder="John Doe"
+                placeholder="Example: Adam Wathan"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 disabled={isLoading}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-[#5d624c] bg-white dark:bg-[#4a5851] text-gray-900 dark:text-[#E1DBCB] placeholder:text-gray-400 dark:placeholder:text-[#868b6b] focus:ring-2 focus:ring-[#394931] dark:focus:ring-[#9ca089] focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#4a5851] dark:text-[#f5f5ec] placeholder:text-gray-400 dark:placeholder:text-[#9ca089] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652] focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-[#c5beab] mb-2">
+              <label className="block text-sm font-medium text-[#4E5652] dark:text-[#c5beab] mb-2">
                 Email
               </label>
               <input
                 type="email"
-                placeholder="john@example.com"
+                placeholder="adam@example.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 disabled={isLoading}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-[#5d624c] bg-white dark:bg-[#4a5851] text-gray-900 dark:text-[#E1DBCB] placeholder:text-gray-400 dark:placeholder:text-[#868b6b] focus:ring-2 focus:ring-[#394931] dark:focus:ring-[#9ca089] focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#4a5851] dark:text-[#f5f5ec] placeholder:text-gray-400 dark:placeholder:text-[#9ca089] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652]  focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-[#c5beab] mb-2">
+              <label className="block text-sm font-medium text-[#4E5652] dark:text-[#c5beab] mb-2">
                 Message
               </label>
               <textarea
@@ -156,23 +156,24 @@ export default function Contact() {
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 rows={5}
                 disabled={isLoading}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-[#5d624c] bg-white dark:bg-[#4a5851] text-gray-900 dark:text-[#E1DBCB] placeholder:text-gray-400 dark:placeholder:text-[#868b6b] focus:ring-2 focus:ring-[#394931] dark:focus:ring-[#9ca089] focus:border-transparent outline-none transition resize-none disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#4a5851] dark:text-[#f5f5ec] placeholder:text-gray-400 dark:placeholder:text-[#9ca089] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652]  focus:border-transparent outline-none transition resize-none disabled:opacity-50 disabled:cursor-not-allowed"
               ></textarea>
             </div>
             <button
               onClick={handleSubmit}
               disabled={isLoading}
-              className="w-full bg-[#394931] dark:bg-[#5d624c] text-white dark:text-[#E1DBCB] py-3 rounded-lg hover:bg-[#4a5851] dark:hover:bg-[#868b6b] transition font-semibold flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full border-2 border-[#394931] dark:border-[#9ca089] text-[#394931] dark:text-[#9ca089] py-2 rounded-md transition font-semibold flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group"
             >
+              <span className="absolute inset-0 bg-[#394931] dark:bg-[#5d624c] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></span>
               {isLoading ? (
                 <>
-                  <div className="w-5 h-5 border-2 border-white dark:border-[#E1DBCB] border-t-transparent rounded-full animate-spin"></div>
-                  <span>Sending...</span>
+                  <div className="w-5 h-5 border-2 border-[#394931] dark:border-[#5d624c] group-hover:border-[#f5f5ec] border-t-transparent rounded-full animate-spin relative z-10 transition-colors duration-300"></div>
+                  <span className="relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-300">Sending...</span>
                 </>
               ) : (
                 <>
-                  <Mail className="w-5 h-5" />
-                  <span>Send Message</span>
+                  <Mail className="w-5 h-5 relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-300" />
+                  <span className="relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-300">Send Message</span>
                 </>
               )}
             </button>

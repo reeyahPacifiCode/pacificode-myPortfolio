@@ -8,21 +8,20 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bg-[#2D2D2D] dark:bg-[#4a5851] text-white py-8">
+      <footer className="bg-[#2D2D2D] dark:bg-[#4E5652] py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="text-gray-400 dark:text-[#c5beab]">
+            <p className="text-[#c5beab] dark:text-[#9ca089]">
               © 2024 Pacificode. All rights reserved.
             </p>
-            <p className="text-gray-500 dark:text-[#868b6b] text-sm mt-2">
+            {/* <p className="text-gray-500 dark:text-[#868b6b] text-sm mt-2">
              
-            </p>
-            
+            </p> */}
             {/* Social Media Links */}
             <div className="flex items-center justify-center space-x-4 mt-4">
               <a
                 href="https://x.com/reya_emaypi"
-                className="text-gray-400 hover:text-[#9ca089] transition"
+                className="text-[#f5f5ec] hover:text-[#9ca089] transition"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -30,7 +29,7 @@ export default function Footer() {
               </a>
               <a
                 href="https://www.facebook.com/share/1AMGejFcPN/"
-                className="text-gray-400 hover:text-[#9ca089] transition"
+                className="text-[#f5f5ec] hover:text-[#9ca089] transition"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -38,7 +37,7 @@ export default function Footer() {
               </a>
               <a
                 href="https://github.com/reeyahPacifiCode"
-                className="text-gray-400 hover:text-[#9ca089] transition"
+                className="text-[#f5f5ec] hover:text-[#9ca089] transition"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -46,7 +45,7 @@ export default function Footer() {
               </a>
               <a
                 href="https://www.instagram.com/its_supercalifrajilistic?igsh=YWp6bHBmbnlzbXhz"
-                className="text-gray-400 hover:text-[#9ca089] transition"
+                className="text-[#f5f5ec] hover:text-[#9ca089] transition"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -58,14 +57,14 @@ export default function Footer() {
             <div className="flex items-center justify-center space-x-6 mt-6 text-sm">
               <button
                 onClick={() => setShowTerms(true)}
-                className="text-gray-400 hover:text-[#9ca089] transition underline-offset-4 hover:underline"
+                className="text-[#c5beab] dark:text-[#9ca089] hover:text-[#9ca089] transition underline-offset-4 hover:underline"
               >
                 Terms of Service
               </button>
               <span className="text-gray-600">|</span>
               <button
                 onClick={() => setShowPrivacy(true)}
-                className="text-gray-400 hover:text-[#9ca089] transition underline-offset-4 hover:underline"
+                className="text-[#c5beab] dark:text-[#9ca089] hover:text-[#9ca089] transition underline-offset-4 hover:underline"
               >
                 Privacy Policy
               </button>
