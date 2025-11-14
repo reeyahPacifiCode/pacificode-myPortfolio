@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRightFromLineIcon } from 'lucide-react';
 
 export default function Projects({ setSelectedProject, navigateToWorks }) {
   const featuredProjects = [
@@ -94,12 +94,12 @@ export default function Projects({ setSelectedProject, navigateToWorks }) {
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-5 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#394931]/90 via-[#868b6b]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-5 text-[#f5f5ec] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                     <p className="text-sm font-semibold mb-2">Click to view details</p>
                     <div className="flex gap-2 flex-wrap">
                       {project.tech.slice(0, 3).map((tech, idx) => (
-                        <span key={idx} className="px-2 py-1 bg-white/20 backdrop-blur-sm rounded text-xs">
+                        <span key={idx} className="px-2 py-1 bg-[#f5f5ec]/20 backdrop-blur-sm rounded text-xs">
                           {tech}
                         </span>
                       ))}
@@ -110,10 +110,10 @@ export default function Projects({ setSelectedProject, navigateToWorks }) {
             
               <div className="p-5">
                 <div className="flex items-center justify-between mb-2.5">
-                  <span className="text-[#4E5652] dark:text-[#9ca089] text-sm font-semibold px-3 py-1 bg-[#394931]/10 dark:bg-[#9ca089]/10 rounded-full">
+                  <span className="text-[#4E5652] dark:text-[#9ca089] text-sm font-semibold px-3 py-1 bg-[#394931]/10 dark:bg-[#9ca089]/20 rounded-full">
                     {project.category}
                   </span>
-                  <span className="text-sm font-semibold text-yellow-600 dark:text-yellow-400">
+                  <span className="text-sm font-semibold text-yellow-700 dark:text-yellow-600">
                     ⭐ Featured
                   </span>
                 </div>
@@ -135,14 +135,11 @@ export default function Projects({ setSelectedProject, navigateToWorks }) {
             onClick={navigateToWorks}
             className="group inline-flex items-center space-x-2 border-2 border-[#394931] dark:border-[#9ca089] text-[#394931] dark:text-[#9ca089] px-3 py-2 rounded-md transition font-semibold relative overflow-hidden text-sm"
           >
-            {/* Animated background */}
             <span className="absolute inset-0 bg-[#394931] dark:bg-[#868b6b] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
-            {/* Text */}
             <span className="relative z-10 transition-colors duration-300 group-hover:text-[#f5f5ec] dark:group-hover:text-[#f5f5ec]">
               See More
             </span>
-            {/* Icon */}
-            <ArrowRight className="w-4 h-4 relative z-10 transition-colors duration-300 group-hover:text-[#f5f5ec] dark:group-hover:text-[#f5f5ec]" />
+            <ArrowRightFromLineIcon className="w-4 h-4 relative z-10 transition-colors duration-300 group-hover:text-[#f5f5ec] dark:group-hover:text-[#f5f5ec]" />
           </button>
         </div>
       </div>

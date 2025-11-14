@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Github, ExternalLink, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
+import { X, Github, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function ProjectModal({ selectedProject, setSelectedProject }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -7,7 +7,14 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
 
   if (!selectedProject) return null;
 
-  const nextImage = () => {
+  const closeModal = () => {
+    setSelectedProject(null);
+    setCurrentImageIndex(0);
+    setIsImageFullscreen(false);
+  };
+
+
+    const nextImage= () => {
     setCurrentImageIndex((prev) => (prev + 1) % selectedProject.images.length);
   };
 
@@ -15,32 +22,28 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
     setCurrentImageIndex((prev) => (prev - 1 + selectedProject.images.length) % selectedProject.images.length);
   };
 
-  const closeModal = () => {
-    setSelectedProject(null);
-    setCurrentImageIndex(0);
-    setIsImageFullscreen(false);
-  };
+
 
   return (
     <div
-      className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 animate-fadeIn"
+      className="fixed inset-0 bg-[#4a5851]/50 z-[60] flex items-center justify-center p-4 animate-fadeIn"
       onClick={closeModal}
     >
       <div
-        className="bg-white dark:bg-[#2D2D2D] rounded-2xl max-w-6xl w-full h-[90vh] overflow-hidden relative shadow-2xl flex flex-col"
+        className="bg-[#f5f5ec] dark:bg-[#2D2D2D] rounded-2xl max-w-4xl w-full max-h-[85vh] overflow-hidden relative shadow-2xl flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={closeModal}
-          className="absolute top-4 right-4 z-10 bg-white dark:bg-[#394931] p-2 rounded-full hover:bg-[#E1DBCB] dark:hover:bg-[#5d624c] transition shadow-lg"
+          className="absolute top-2 right-2 md:top-3 md:right-3 z-20 bg-[#f5f5ec] dark:bg-[#394931] p-2 rounded-full hover:bg-[#9ca089]/40 dark:hover:bg-[#5d624c] transition shadow-lg"
         >
           <X className="w-6 h-6 text-[#2D2D2D] dark:text-[#E1DBCB]" />
         </button>
 
         {/* Image Gallery */}
         <div className="relative flex-shrink-0">
-          <div className="relative h-[380px] bg-[#E1DBCB] dark:bg-[#394931]">
+          <div className="relative h-[320px] bg-[#DCE2D6] dark:bg-[#394931]/30">
             <img
               src={selectedProject.images[currentImageIndex]}
               alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
@@ -48,41 +51,15 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
               onClick={() => setIsImageFullscreen(true)}
             />
 
-            {/* Fullscreen Button */}
-            <button
-              onClick={() => setIsImageFullscreen(true)}
-              className="absolute top-4 left-4 bg-white/90 dark:bg-[#394931]/90 p-2 rounded-full hover:bg-white dark:hover:bg-[#5d624c] transition shadow-lg"
-            >
-              <Maximize2 className="w-5 h-5 text-[#2D2D2D] dark:text-[#E1DBCB]" />
-            </button>
-
-            {/* Navigation Arrows */}
-            {selectedProject.images.length > 1 && (
-              <>
-                <button
-                  onClick={prevImage}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-[#394931]/90 p-3 rounded-full hover:bg-white dark:hover:bg-[#5d624c] transition shadow-lg"
-                >
-                  <ChevronLeft className="w-6 h-6 text-[#2D2D2D] dark:text-[#E1DBCB]" />
-                </button>
-                <button
-                  onClick={nextImage}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-[#394931]/90 p-3 rounded-full hover:bg-white dark:hover:bg-[#5d624c] transition shadow-lg"
-                >
-                  <ChevronRight className="w-6 h-6 text-[#2D2D2D] dark:text-[#E1DBCB]" />
-                </button>
-              </>
-            )}
-
             {/* Image Counter */}
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-sm text-white px-4 py-1.5 rounded-full text-xs font-semibold">
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-[#4E5652]/50 text-white px-4 py-1.5 rounded-full text-xs font-semibold">
               {currentImageIndex + 1} / {selectedProject.images.length}
             </div>
           </div>
 
           {/* Thumbnail Strip */}
           {selectedProject.images.length > 1 && (
-            <div className="flex gap-2 p-3 overflow-x-auto bg-[#f5f5ec] dark:bg-[#394931]/30 custom-scrollbar">
+            <div className="flex gap-2 p-3 overflow-x-auto bg-[#DCE2D6]/40 dark:bg-[#394931]/50">
               {selectedProject.images.map((img, idx) => (
                 <button
                   key={idx}
@@ -101,8 +78,8 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
         </div>
 
         {/* Project Details */}
-        <div className="flex-grow p-8 overflow-y-auto">
-          <div className="flex items-center gap-3 mb-4 flex-wrap">
+        <div className="flex-grow p-6 overflow-y-auto">
+          <div className="flex items-center gap-3 mb-3 flex-wrap">
             <span className="text-[#394931] dark:text-[#9ca089] text-sm font-semibold px-4 py-1.5 bg-[#394931]/10 dark:bg-[#9ca089]/10 rounded-full">
               {selectedProject.category}
             </span>
@@ -120,35 +97,22 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
             {selectedProject.title}
           </h2>
 
-          <p className="text-[#5d624c] dark:text-[#c5beab] leading-relaxed text-base mb-6">
+          <p className="text-[#5d624c] dark:text-[#c5beab] leading-relaxed text-base mb-4">
             {selectedProject.description}
           </p>
 
-         
-
-          {/* Action Buttons */}
-          <div className="flex flex-wrap gap-4">
+          {/* Action Button */}
+          <div className="mt-4">
             <a
               href={selectedProject.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-[#2D2D2D] dark:bg-[#394931] text-[#E1DBCB] px-6 py-2.5 rounded-lg hover:bg-[#394931] dark:hover:bg-[#5d624c] transition font-semibold shadow-md transform hover:scale-105"
+              className="inline-flex items-center gap-2 border-2 border-[#394931] dark:border-[#9ca089] text-[#394931] dark:text-[#9ca089] px-4 py-2 rounded-md transition font-semibold relative overflow-hidden group text-base leading-none whitespace-nowrap"
             >
-              <Github className="w-5 h-5" />
-              <span>View on GitHub</span>
+              <span className="absolute inset-0 bg-[#394931] dark:bg-[#5d624c] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out pointer-events-none"></span>
+              <Github className="w-5 h-5 relative z-10 block group-hover:text-[#f5f5ec] transition-colors duration-300" />
+              <span className="relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-300">View on GitHub</span>
             </a>
-
-            {selectedProject.liveUrl && (
-              <a
-                href={selectedProject.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-[#394931] dark:bg-[#5d624c] text-[#E1DBCB] px-6 py-2.5 rounded-lg hover:bg-[#5d624c] dark:hover:bg-[#868b6b] transition font-semibold shadow-md transform hover:scale-105"
-              >
-                <ExternalLink className="w-5 h-5" />
-                <span>View Live Demo</span>
-              </a>
-            )}
           </div>
         </div>
       </div>
@@ -156,16 +120,16 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
       {/* Fullscreen Image Viewer */}
       {isImageFullscreen && (
         <div
-          className="fixed inset-0 bg-black/95 z-[60] flex items-center justify-center p-4"
+          className="fixed inset-0 bg-[#5d624c]/70 dark:bg-[#394931]/70 z-50 flex items-center justify-center p-4 animate-fadeOut"
           onClick={() => setIsImageFullscreen(false)}
         >
+          {/* Close Button */}
           <button
             onClick={() => setIsImageFullscreen(false)}
-            className="absolute top-4 right-4 bg-white/10 backdrop-blur-sm p-3 rounded-full hover:bg-white/20 transition"
+            className="absolute top-4 right-4 bg-[#f5f5ec]/70 backdrop-blur-sm p-3 rounded-full hover:bg-[#f5f5ec] transition"
           >
-            <X className="w-6 h-6 text-white" />
+            <X className="w-6 h-6 text-[#2d2d2d]" />
           </button>
-
           <img
             src={selectedProject.images[currentImageIndex]}
             alt="Fullscreen view"
@@ -180,18 +144,18 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
                   e.stopPropagation();
                   prevImage();
                 }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-sm p-4 rounded-full hover:bg-white/20 transition"
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#DCE2D6]/100 backdrop-blur-sm p-4 rounded-full hover:bg-[#f5f5ec] transition"
               >
-                <ChevronLeft className="w-8 h-8 text-white" />
+                <ChevronLeft className="w-8 h-8 text-[#2D2D2D]" />
               </button>
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   nextImage();
                 }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-sm p-4 rounded-full hover:bg-white/20 transition"
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#DCE2D6]/100 backdrop-blur-sm p-4 rounded-full hover:bg-[#f5f5ec] transition"
               >
-                <ChevronRight className="w-8 h-8 text-white" />
+                <ChevronRight className="w-8 h-8 text-[#2D2D2D]" />
               </button>
             </>
           )}
@@ -201,6 +165,7 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
           </div>
         </div>
       )}
+
 
       <style>{`
         @keyframes fadeIn {

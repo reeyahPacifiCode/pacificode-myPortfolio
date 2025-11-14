@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function CertificateModal({
   show,
@@ -55,7 +55,7 @@ export default function CertificateModal({
           {/* Close Button */}
           <button
             onClick={closeModal}
-            className="absolute top-2 right-2 md:top-3 md:right-3 z-10 bg-white dark:bg-[#394931] p-1.5 md:p-2 rounded-full hover:bg-[#f5f5ec] dark:hover:bg-[#5d624c] transition shadow-lg"
+            className="absolute top-2 right-2 md:top-3 md:right-3 z-10 bg-[#DCE2D6]/100 dark:bg-[#394931] p-1.5 md:p-2 rounded-full hover:bg-[#f5f5ec] dark:hover:bg-[#5d624c] transition shadow-lg"
           >
             <X className="w-5 h-5 md:w-6 md:h-6 text-[#2D2D2D] dark:text-[#E1DBCB]" />
           </button>
@@ -136,14 +136,14 @@ export default function CertificateModal({
       {/* Fullscreen Image Viewer */}
       {isImageFullscreen && (
         <div
-          className="fixed inset-0 bg-black/95 z-[60] flex items-center justify-center p-4"
+          className="fixed inset-0 bg-[#4a5851]/50 z-[60] flex items-center justify-center p-4 "
           onClick={() => setIsImageFullscreen(false)}
         >
           <button
             onClick={() => setIsImageFullscreen(false)}
-            className="absolute top-4 right-4 bg-white/10 backdrop-blur-sm p-3 rounded-full hover:bg-white/20 transition"
+            className="absolute top-4 right-4 bg-[#f5f5ec]/70 backdrop-blur-sm p-3 rounded-full hover:bg-[#f5f5ec] transition"
           >
-            <X className="w-6 h-6 text-white" />
+            <X className="w-6 h-6 text-[#2d2d2d]" />
           </button>
 
           <img
@@ -160,18 +160,18 @@ export default function CertificateModal({
                   e.stopPropagation();
                   prevCertificate();
                 }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-sm p-4 rounded-full hover:bg-white/20 transition"
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#f5f5ec]/70  backdrop-blur-sm p-4 rounded-full hover:bg-[#f5f5ec] transition"
               >
-                <ChevronLeft className="w-8 h-8 text-white" />
+                <ChevronLeft className="w-8 h-8 text-[#2d2d2d]" />
               </button>
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   nextCertificate();
                 }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-sm p-4 rounded-full hover:bg-white/20 transition"
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#f5f5ec]/70 backdrop-blur-sm p-4 rounded-full hover:bg-[#f5f5ec] transition"
               >
-                <ChevronRight className="w-8 h-8 text-white" />
+                <ChevronRight className="w-8 h-8 text-[#2d2d2d]" />
               </button>
             </>
           )}
