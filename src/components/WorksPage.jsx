@@ -1,13 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Filter, Search, ArrowLeftFromLine, ArrowDownFromLineIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { allProjects, categories } from '../data/projects'; // 👈 Import dito
+import { allProjects, categories } from '../data/projects';
 
 export default function WorksPage({ setSelectedProject, darkMode }) {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [itemsToShow, setItemsToShow] = useState(12);
+  const [visibleSections, setVisibleSections] = useState({});
+
+  const sectionRefs = useRef({});
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleSections((prev) => ({
+              ...prev,
+              [entry.target.dataset.section]: true,
+            }));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    Object.values(sectionRefs.current).forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   // Filter and search logic
   const filteredProjects = allProjects.filter(project => {
@@ -40,12 +65,16 @@ export default function WorksPage({ setSelectedProject, darkMode }) {
             <span className="absolute inset-0 bg-[#2D2D2D] dark:bg-[#868b6b] transform translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
             <ArrowLeftFromLine className="w-4 h-4 relative z-10 transition-colors duration-300 group-hover:text-[#f5f5ec] dark:group-hover:text-[#f5f5ec]" />
             <span className="relative z-10 transition-colors duration-300 group-hover:text-[#f5f5ec] dark:group-hover:text-[#f5f5ec]">
-              Back To Projects
+              Back
             </span>
           </button>
           
           {/* Header */}
-          <div className="text-center mb-8">
+          <div 
+            ref={(el) => (sectionRefs.current.header = el)}
+            data-section="header"
+            className={`text-center mb-8 transition-all duration-700 ${visibleSections.header ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+          >
             <h1 className="text-3xl md:text-4xl font-bold text-[#2D2D2D] dark:text-[#E1DBCB] mb-4">
               All Projects
             </h1>
@@ -56,7 +85,11 @@ export default function WorksPage({ setSelectedProject, darkMode }) {
           </div>
 
           {/* Search Bar */}
-          <div className="mb-6 max-w-2xl mx-auto">
+          <div 
+            ref={(el) => (sectionRefs.current.search = el)}
+            data-section="search"
+            className={`mb-6 max-w-2xl mx-auto transition-all duration-700 delay-100 ${visibleSections.search ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+          >
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#868b6b]" />
               <input
@@ -70,20 +103,27 @@ export default function WorksPage({ setSelectedProject, darkMode }) {
           </div>
 
           {/* Category Filter */}
-          <div className="mb-8">
+          <div 
+            ref={(el) => (sectionRefs.current.filter = el)}
+            data-section="filter"
+            className={`mb-8 transition-all duration-700 delay-200 ${visibleSections.filter ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+          >
             <div className="flex items-center gap-2 mb-3">
               <Filter className="w-4 h-4 text-[#2D2D2D] dark:text-[#9ca089]" />
               <h3 className="text-base font-semibold text-[#2D2D2D] dark:text-[#E1DBCB]">Filter by Category</h3>
             </div>
             <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
+              {categories.map((category, idx) => (
                 <button
                   key={category}
                   onClick={() => {
                     setSelectedCategory(category);
                     setItemsToShow(12);
                   }}
+                  style={{ animationDelay: `${idx * 200}ms` }}
                   className={`px-4 py-1.5 rounded-md text-sm font-semibold transition-all duration-300 ${
+                    visibleSections.filter ? 'animate-popIn' : 'opacity-0 scale-0'
+                  } ${
                     selectedCategory === category
                       ? 'bg-[#2D2D2D] dark:bg-[#5d624c] text-[#E1DBCB] scale-105 shadow-lg'
                       : 'bg-[#f5f5ec] dark:bg-[#2D2D2D] border-2 dark:border-[#5d624c] text-[#5d624c] dark:text-[#c5beab] hover:bg-[#E1DBCB] dark:hover:bg-[#5d624c]/50 shadow'
@@ -101,12 +141,20 @@ export default function WorksPage({ setSelectedProject, darkMode }) {
           </div>
 
           {/* Results Count */}
-          <div className="mb-4 text-[#5d624c] dark:text-[#c5beab] text-sm">
+          <div 
+            ref={(el) => (sectionRefs.current.results = el)}
+            data-section="results"
+            className={`mb-4 text-[#5d624c] dark:text-[#c5beab] text-sm transition-all duration-700 delay-300 ${visibleSections.results ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+          >
             Showing {displayedProjects.length} of {filteredProjects.length} projects
           </div>
 
         {/* Featured Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 ">
+        <div 
+          ref={(el) => (sectionRefs.current.grid = el)}
+          data-section="grid"
+          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 transition-all duration-700 delay-[400ms] ${visibleSections.grid ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+        >
           {displayedProjects.map((project) => (
             <div
             key={project.id}
@@ -194,6 +242,24 @@ export default function WorksPage({ setSelectedProject, darkMode }) {
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
           overflow: hidden;
+        }
+
+        @keyframes popIn {
+          0% {
+            opacity: 0;
+            transform: scale(0);
+          }
+          50% {
+            transform: scale(1.1);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        .animate-popIn {
+          animation: popIn 1.0s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
         }
       `}</style>
     </div>

@@ -1,119 +1,55 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRightFromLineIcon } from 'lucide-react';
+import { allProjects} from '../data/projects';
 
 export default function Projects({ setSelectedProject, navigateToWorks }) {
-  const featuredProjects = [
-    {
-      id: 1,
-      title: 'E-Commerce Platform | Condominum',
-      category: 'PHP',
-      description: 'A comprehensive condominium e-commerce platform featuring property listings, unit reservations, payment processing, resident authentication, and an advanced admin dashboard for managing properties, amenities, and resident services.',
-      tech: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap'],
-      featured: true,
-      githubUrl: 'https://github.com/reeyahPacifiCode/php_activity_5.git',
-      thumbnail: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop',
-      images: 
-      [ '/PHP-E-COMMERCE/P1.png',
-      '/PHP-E-COMMERCE/P2.png',
-      '/PHP-E-COMMERCE/P3.png',
-      '/PHP-E-COMMERCE/P3a.png',
-      '/PHP-E-COMMERCE/P3b.png',
-      '/PHP-E-COMMERCE/P3c.png',
-      '/PHP-E-COMMERCE/P3c1.png',
-      '/PHP-E-COMMERCE/P3c2.png',
-      '/PHP-E-COMMERCE/P3d.png',
-      '/PHP-E-COMMERCE/P3e.png',
-      '/PHP-E-COMMERCE/P3f.png',
-      '/PHP-E-COMMERCE/P3g.png',
-      '/PHP-E-COMMERCE/P3h.png',
-      '/PHP-E-COMMERCE/P3i.png',
-      '/PHP-E-COMMERCE/P4.png',
-      '/PHP-E-COMMERCE/P5.png',
-      '/PHP-E-COMMERCE/P6.png',
-      '/PHP-E-COMMERCE/P7.png',
-      '/PHP-E-COMMERCE/P7a.png',
-      '/PHP-E-COMMERCE/P7b.png',
-      '/PHP-E-COMMERCE/P7c.png',
-      '/PHP-E-COMMERCE/P7d.png',
-      '/PHP-E-COMMERCE/P7e.png', ]
-    },
-    {
-      id: 2,
-      title: 'Block of codes | Scratch ',
-      category: 'Block Of Codes',
-      description: 'A visual programming project built with block-based coding logic, demonstrating fundamental programming concepts like loops, conditionals, variables, and event handling through an intuitive drag-and-drop interface.',
-      tech: ['Scratch'],
-      featured: true,
-      githubUrl: 'https://github.com/reeyahPacifiCode/scratch_project.git',
-      thumbnail: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&h=600&fit=crop',
-      images: 
-       ['/BOC-SCRATCH/Capture.JPG ',
-        '/BOC-SCRATCH/7.JPG ',
-        '/BOC-SCRATCH/6.JPG ',
-        '/BOC-SCRATCH/5.JPG ',
-        '/BOC-SCRATCH/4.JPG ',
-        '/BOC-SCRATCH/3.JPG ',
-        '/BOC-SCRATCH/2.JPG ',
-       '/BOC-SCRATCH/1A.JPG ',
-       '/BOC-SCRATCH/1B.JPG ',
-       '/BOC-SCRATCH/1C.JPG ',
-       '/BOC-SCRATCH/1D.JPG ',
-       '/BOC-SCRATCH/1E.JPG ',
-       '/BOC-SCRATCH/1F.JPG ',
-       '/BOC-SCRATCH/1G.JPG ',
-       '/BOC-SCRATCH/1H.JPG ',
-       '/BOC-SCRATCH/1I.JPG ',
-       '/BOC-SCRATCH/1J.JPG ',
-       '/BOC-SCRATCH/1K.JPG ',
-       '/BOC-SCRATCH/1L.JPG ',
-       '/BOC-SCRATCH/1M.JPG ',
-       '/BOC-SCRATCH/1N.JPG ',
-       '/BOC-SCRATCH/1O.JPG ',
-       '/BOC-SCRATCH/1P.JPG ',
-       '/BOC-SCRATCH/1Q.JPG ',
-       '/BOC-SCRATCH/1R.JPG ',
-       '/BOC-SCRATCH/1T.JPG ', ]
-    },
+    // Get featured projects and limit to 4
+     const featuredProjects = allProjects
+    .filter(project => project.featured === true)
+    .slice(0, 4); // KUMUHA LANG NG FIRST 4
 
-    {
-      id: 3,
-      title: 'HTML AND CSS | PSALM',
-      category: 'HTML/CSS',
-      description: 'A responsive web page featuring biblical psalms with clean typography and modern CSS styling. Demonstrates internal CSS implementation, semantic HTML structure, and effective layout design principles.',
-      tech: ['HTML/CSS INTERNAL'],
-      featured: true,
-      githubUrl: 'https://github.com/reeyahPacifiCode/htmlcss_activity-5.git',
-      thumbnail: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&h=600&fit=crop',
-      images: [
-        '/HTML-PASLM/1.png',
-        '/HTML-PASLM/2.png',
-      ]
-    },
+  const [visibleSections, setVisibleSections] = useState({});
+  const sectionRefs = useRef({});
 
-    {
-      id: 4,
-      title: 'Portfolio UI/UX Design | Sign Language App',
-      category: 'UI/UX',
-      description: 'An accessible and intuitive UI/UX design for a sign language learning application. Features user-friendly navigation, interactive learning modules, visual gesture demonstrations, and inclusive design principles to enhance communication accessibility.',
-      tech: ['Canva', 'Prototyping'],
-      featured: true,
-      githubUrl: 'https://github.com/reeyahPacifiCode/UXUIDesign_project.git',
-      thumbnail: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop',
-      images: [
-        '/UX-UI DESIGN/ONE.png',
-        '/UX-UI DESIGN/TWO.png',
-        '/UX-UI DESIGN/THREE.png',
-        '/UX-UI DESIGN/FOUR.png',
-        '/UX-UI DESIGN/FIVE.png',
-      ]
-    }
-  ];
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleSections((prev) => ({
+              ...prev,
+              [entry.target.dataset.section]: true,
+            }));
+          } else {
+            setVisibleSections((prev) => ({
+              ...prev,
+              [entry.target.dataset.section]: false,
+            }));
+          }
+        });
+      },
+      { 
+        threshold: 0.2,
+        rootMargin: '0px'
+      }
+    );
+
+    Object.values(sectionRefs.current).forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="projects" className="py-20 bg-[#DCE2D6] dark:bg-[#4a5851]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div 
+          ref={(el) => (sectionRefs.current.header = el)}
+          data-section="header"
+          className={`text-center mb-12 transition-all duration-[1500ms] ${visibleSections.header ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+        >
           <h2 className="text-4xl font-bold text-[#2D2D2D] dark:text-[#E1DBCB] mb-4">
             Projects
           </h2>
@@ -124,7 +60,11 @@ export default function Projects({ setSelectedProject, navigateToWorks }) {
         </div>
 
         {/* Featured Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 mb-8 max-w-5xl mx-auto">
+        <div 
+          ref={(el) => (sectionRefs.current.grid = el)}
+          data-section="grid"
+          className={`grid md:grid-cols-2 lg:grid-cols-2 gap-6 mb-8 max-w-5xl mx-auto transition-all duration-1000 delay-200 ${visibleSections.grid ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+        >
           {featuredProjects.map((project) => (
             <div
             key={project.id}
@@ -173,7 +113,11 @@ export default function Projects({ setSelectedProject, navigateToWorks }) {
 
 
         {/* See more Button */}
-        <div className="text-center">
+        <div 
+          ref={(el) => (sectionRefs.current.button = el)}
+          data-section="button"
+          className={`text-center transition-all duration-1000 delay-400 ${visibleSections.button ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+        >
           <button
             onClick={navigateToWorks}
             className="group inline-flex items-center space-x-2 border-2 border-[#394931] dark:border-[#9ca089] text-[#394931] dark:text-[#9ca089] px-3 py-2 rounded-md transition font-semibold relative overflow-hidden text-sm"

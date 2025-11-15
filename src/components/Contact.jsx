@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Mail, X, CheckCircle, AlertCircle } from 'lucide-react';
 
 export default function Contact() {
@@ -13,6 +13,31 @@ export default function Contact() {
     type: '', // 'success' or 'error'
     message: ''
   });
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   const showNotification = (type, message) => {
     setNotification({ show: true, type, message });
@@ -88,7 +113,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-[#f5f5ec] dark:bg-[#2D2D2D] relative transition-colors duration-300">
+    <section id="contact" ref={sectionRef} className="py-20 bg-[#f5f5ec] dark:bg-[#2D2D2D] relative transition-colors duration-300">
       {/* Notification Modal */}
       {notification.show && (
         <div className="fixed top-4 right-4 z-50 animate-slideIn">
@@ -120,7 +145,9 @@ export default function Contact() {
       )}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className={`text-center mb-12 transition-all duration-[800ms] ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+        }`}>
           <h2 className="text-4xl font-bold text-[#2D2D2D] dark:text-[#E1DBCB] mb-4">
             Get In Touch
           </h2>
@@ -128,7 +155,9 @@ export default function Contact() {
         </div>
         <div className="max-w-2xl mx-auto">
           <div className="space-y-6">
-            <div>
+            <div className={`transition-all duration-700 delay-100 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+            }`}>
               <label className="block text-sm font-medium text-[#4E5652] dark:text-[#c5beab] mb-2">
                 Fullname
               </label>
@@ -141,7 +170,9 @@ export default function Contact() {
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#9ca089] dark:text-[#2D2D2D] placeholder:text-gray-400 dark:placeholder:text-[#5d624c] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652] focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
-            <div>
+            <div className={`transition-all duration-500 delay-150 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+            }`}>
               <label className="block text-sm font-medium text-[#4E5652] dark:text-[#c5beab] mb-2">
                 Email
               </label>
@@ -154,7 +185,9 @@ export default function Contact() {
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#9ca089] dark:text-[#2D2D2D] placeholder:text-gray-400 dark:placeholder:text-[#5d624c] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652]  focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
-            <div>
+            <div className={`transition-all duration-500 delay-[225ms] ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+            }`}>
               <label className="block text-sm font-medium text-[#4E5652] dark:text-[#c5beab] mb-2">
                 Message
               </label>
@@ -170,18 +203,20 @@ export default function Contact() {
             <button
               onClick={handleSubmit}
               disabled={isLoading}
-              className="w-full border-2 border-[#394931] dark:border-[#9ca089] text-[#394931] dark:text-[#9ca089] py-2 rounded-md transition font-semibold flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group"
+              className={`w-full border-2 border-[#394931] dark:border-[#9ca089] text-[#394931] dark:text-[#9ca089] py-2 rounded-md transition-all font-semibold flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group duration-700 delay-[400ms] ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+              }`}
             >
               <span className="absolute inset-0 bg-[#394931] dark:bg-[#5d624c] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></span>
               {isLoading ? (
                 <>
-                  <div className="w-5 h-5 border-2 border-[#394931] dark:border-[#5d624c] group-hover:border-[#f5f5ec] border-t-transparent rounded-full animate-spin relative z-10 transition-colors duration-300"></div>
-                  <span className="relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-300">Sending...</span>
+                  <div className="w-5 h-5 border-2 border-[#394931] dark:border-[#5d624c] group-hover:border-[#f5f5ec] border-t-transparent rounded-full animate-spin relative z-10 transition-colors duration-100"></div>
+                  <span className="relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-200">Sending...</span>
                 </>
               ) : (
                 <>
-                  <Mail className="w-5 h-5 relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-300" />
-                  <span className="relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-300">Send Message</span>
+                  <Mail className="w-5 h-5 relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-200" />
+                  <span className="relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-100">Send Message</span>
                 </>
               )}
             </button>

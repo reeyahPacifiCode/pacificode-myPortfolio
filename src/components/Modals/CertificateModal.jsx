@@ -136,7 +136,7 @@ export default function CertificateModal({
       {/* Fullscreen Image Viewer */}
       {isImageFullscreen && (
         <div
-          className="fixed inset-0 bg-[#4a5851]/50 z-[60] flex items-center justify-center p-4 "
+          className="fixed inset-0 bg-[#4a5851] z-[60] flex items-center justify-center p-4 "
           onClick={() => setIsImageFullscreen(false)}
         >
           <button

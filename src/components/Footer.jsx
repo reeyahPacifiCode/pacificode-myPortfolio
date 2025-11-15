@@ -57,14 +57,14 @@ export default function Footer() {
             <div className="flex items-center justify-center space-x-6 mt-6 text-sm">
               <button
                 onClick={() => setShowTerms(true)}
-                className="text-[#c5beab] dark:text-[#9ca089] hover:text-[#9ca089] transition underline-offset-4 hover:underline"
+                className="relative text-[#c5beab] dark:text-[#9ca089] hover:text-[#868b6b] dark:hover:text-[#c5beab] transition-colors duration-300 group underline decoration-[#c5beab] dark:decoration-[#9ca089] underline-offset-4"
               >
                 Terms of Service
               </button>
-              <span className="text-gray-600">|</span>
+              <span className="text-gray-600 dark:text-gray-500">|</span>
               <button
                 onClick={() => setShowPrivacy(true)}
-                className="text-[#c5beab] dark:text-[#9ca089] hover:text-[#9ca089] transition underline-offset-4 hover:underline"
+                className="relative text-[#c5beab] dark:text-[#9ca089] hover:text-[#868b6b] dark:hover:text-[#c5beab] transition-colors duration-300 group underline decoration-[#c5beab] dark:decoration-[#9ca089] underline-offset-4"
               >
                 Privacy Policy
               </button>

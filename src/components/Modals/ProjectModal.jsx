@@ -59,7 +59,7 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
 
           {/* Thumbnail Strip */}
           {selectedProject.images.length > 1 && (
-            <div className="flex gap-2 p-3 overflow-x-auto bg-[#DCE2D6]/40 dark:bg-[#394931]/50">
+            <div className="flex gap-2 p-3 overflow-x-auto bg-[#DCE2D6]/40 dark:bg-[#394931]/50 custom-scrollbar">
               {selectedProject.images.map((img, idx) => (
                 <button
                   key={idx}
@@ -120,7 +120,7 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
       {/* Fullscreen Image Viewer */}
       {isImageFullscreen && (
         <div
-          className="fixed inset-0 bg-[#5d624c]/70 dark:bg-[#394931]/70 z-50 flex items-center justify-center p-4 animate-fadeOut"
+          className="fixed inset-0 bg-[#5d624c] dark:bg-[#394931]/70 z-50 flex items-center justify-center p-4 animate-fadeOut"
           onClick={() => setIsImageFullscreen(false)}
         >
           {/* Close Button */}
@@ -160,40 +160,66 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
             </>
           )}
 
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-semibold">
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-[#DCE2D6]/100 backdrop-blur-sm text-[#2D2D2D] px-6 py-3 rounded-full text-sm font-semibold">
             {currentImageIndex + 1} / {selectedProject.images.length}
           </div>
         </div>
       )}
 
 
-      <style>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: scale(0.95);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
+     <style>{`
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out;
-        }
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-out;
+  }
 
-        .custom-scrollbar::-webkit-scrollbar {
-          height: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #9ca089;
-          border-radius: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #868b6b;
-        }
-      `}</style>
+  /* Horizontal Scrollbar (for thumbnail strip) */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #394931 !important;
+    border-radius: 4px !important;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #5d624c !important;
+  }
+  
+  .custom-scrollbar {
+    scrollbar-width: thin !important;
+    scrollbar-color: #394931 transparent !important;
+  }
+
+  /* Dark mode scrollbar */
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9ca089 !important;
+  }
+  
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #868b6b !important;
+  }
+  
+  .dark .custom-scrollbar {
+    scrollbar-color: #9ca089 transparent !important;
+  }
+`}</style>
     </div>
   );
 }
