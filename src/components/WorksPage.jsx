@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Filter, Search, ArrowLeftFromLine } from 'lucide-react';
+import { Filter, Search, ArrowLeftFromLine, ArrowDownFromLineIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { allProjects, categories } from '../data/projects'; // 👈 Import dito
 
@@ -138,9 +138,11 @@ export default function WorksPage({ setSelectedProject, darkMode }) {
                   <span className="text-[#4E5652] dark:text-[#9ca089] text-sm font-semibold px-3 py-1 bg-[#394931]/10 dark:bg-[#9ca089]/20 rounded-full">
                     {project.category}
                   </span>
-                  <span className="text-sm font-semibold text-yellow-700 dark:text-yellow-600">
-                    ⭐ Featured
-                  </span>
+                  {project.featured && (
+                    <span className="text-sm font-semibold text-yellow-700 dark:text-yellow-600">
+                      ⭐ Featured
+                    </span>
+                  )}
                 </div>
                 <h3 className="text-xl font-bold text-[#2D2D2D] dark:text-[#E1DBCB] mb-2 line-clamp-1">
                   {project.title}
@@ -158,9 +160,13 @@ export default function WorksPage({ setSelectedProject, darkMode }) {
             <div className="text-center">
               <button
                 onClick={() => setItemsToShow(prev => prev + 12)}
-                className="bg-[#2D2D2D] dark:bg-[#5d624c] text-[#E1DBCB] px-6 py-2.5 rounded-full hover:bg-[#5d624c] dark:hover:bg-[#868b6b] transition-all duration-300 font-semibold shadow-lg transform hover:scale-105 text-sm"
-              >
-                Load More Projects
+                className="group inline-flex items-center space-x-2 border-2 border-[#394931] dark:border-[#9ca089] text-[#394931] dark:text-[#9ca089] px-3 py-2 rounded-md transition font-semibold relative overflow-hidden text-sm"
+          >
+            <span className="absolute inset-0 bg-[#394931] dark:bg-[#868b6b] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+            <span className="relative z-10 transition-colors duration-300 group-hover:text-[#f5f5ec] dark:group-hover:text-[#f5f5ec]">
+              See More
+            </span>
+            <ArrowDownFromLineIcon className="w-4 h-4 relative z-10 transition-colors duration-300 group-hover:text-[#f5f5ec] dark:group-hover:text-[#f5f5ec]" />
               </button>
             </div>
           )}
