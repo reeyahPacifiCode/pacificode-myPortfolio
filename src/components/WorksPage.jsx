@@ -58,16 +58,22 @@ export default function WorksPage({ setSelectedProject, darkMode }) {
       <div className="relative z-0 min-h-screen bg-[#DCE2D6] dark:bg-[#4a5851] pt-4 pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Back Button */}
-          <button
-            onClick={scrollToProjects}
-            className="group inline-flex items-center space-x-2 border-2 border-[#2D2D2D] dark:border-[#9ca089] text-[#2D2D2D] dark:text-[#9ca089] px-3 py-2 rounded-md transition font-semibold relative overflow-hidden text-sm"
-          >
-            <span className="absolute inset-0 bg-[#2D2D2D] dark:bg-[#868b6b] transform translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
-            <ArrowLeftFromLine className="w-4 h-4 relative z-10 transition-colors duration-300 group-hover:text-[#f5f5ec] dark:group-hover:text-[#f5f5ec]" />
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-[#f5f5ec] dark:group-hover:text-[#f5f5ec]">
-              Back
-            </span>
-          </button>
+          <div className="mb-6">
+            {/* Back Button - Icon only on mobile, full button on desktop */}
+            <button
+              onClick={scrollToProjects}
+              className="group inline-flex items-center justify-center border-2 border-[#2D2D2D] dark:border-[#9ca089] text-[#2D2D2D] dark:text-[#9ca089]
+              w-9 h-9 sm:w-auto sm:space-x-2 sm:px-3 sm:py-2
+              rounded-md transition font-semibold relative overflow-hidden
+              text-xs sm:text-sm"
+            >
+              <span className="absolute inset-0 bg-[#2D2D2D] dark:bg-[#868b6b] transform translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+              <ArrowLeftFromLine className="w-4 h-4 relative z-10 transition-colors duration-300 group-hover:text-[#f5f5ec] dark:group-hover:text-[#f5f5ec]" />
+              <span className="hidden sm:inline relative z-10 transition-colors duration-300 group-hover:text-[#f5f5ec] dark:group-hover:text-[#f5f5ec]">
+                Back
+              </span>
+            </button>
+          </div>
           
           {/* Header */}
           <div 

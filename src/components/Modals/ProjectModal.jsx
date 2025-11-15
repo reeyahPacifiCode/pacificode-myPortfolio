@@ -36,7 +36,7 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
         {/* Close Button */}
         <button
           onClick={closeModal}
-          className="absolute top-2 right-2 md:top-3 md:right-3 z-20 bg-[#f5f5ec] dark:bg-[#394931] p-2 rounded-full hover:bg-[#9ca089]/40 dark:hover:bg-[#5d624c] transition shadow-lg"
+          className="absolute top-2 right-2 md:top-3 md:right-3 z-20 bg-[#f5f5ec] dark:bg-[#394931] p-2 rounded-full hover:bg-[#9ca089]/40 dark:hover:bg-[#5d624c] transition shadow-md"
         >
           <X className="w-6 h-6 text-[#2D2D2D] dark:text-[#E1DBCB]" />
         </button>
@@ -47,12 +47,12 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
             <img
               src={selectedProject.images[currentImageIndex]}
               alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
-              className="w-full h-full object-contain cursor-zoom-in"
+              className="w-320 h-full object-contain cursor-zoom-in"
               onClick={() => setIsImageFullscreen(true)}
             />
 
             {/* Image Counter */}
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-[#4E5652]/50 text-white px-4 py-1.5 rounded-full text-xs font-semibold">
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 bg-[#4E5652]/50 text-white px-4 py-1.5 rounded-full text-xs font-semibold">
               {currentImageIndex + 1} / {selectedProject.images.length}
             </div>
           </div>
