@@ -233,7 +233,7 @@ export const allProjects = [
     description: 'Complete network topology design and implementation using Cisco Packet Tracer. Covers network architecture, device configuration, IP addressing schemes, and basic routing protocols for small to medium enterprise networks.',
     tech: ['Cisco Packet Tracer', 'Networking', 'Routing', 'IP Configuration'],
     featured: false,
-    githubUrl: 'https://github.com/reeyahPacifiCode/cisco_activity-1.git',
+    githubUrl: 'https://github.com/reeyahPacifiCode/cisco_actvity-1.git',
     thumbnail: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=600&fit=crop',
     images: 
     [
@@ -320,7 +320,7 @@ export const allProjects = [
     description: 'Network security implementation and diagnostic techniques using Cisco tools. Covers packet analysis, connectivity testing, security protocols, firewall configuration, and systematic network troubleshooting methodologies.',
     tech: ['Cisco Packet Tracer', 'Network Security', 'Troubleshooting', 'Packet Analysis'],
     featured: false,
-    githubUrl: 'https://github.com/reeyahPacifiCode/cisco_actvity-4.git',
+    githubUrl: 'https://github.com/reeyahPacifiCode/cisco_activity-4.git',
     thumbnail: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop',
     images: 
     [
@@ -504,7 +504,7 @@ export const allProjects = [
     description: 'Local Area Network setup with switch configuration and VLAN implementation. Demonstrates network segmentation, switch port configuration, and inter-VLAN routing for optimized network performance and security.',
     tech: ['Cisco Packet Tracer', 'Switching', 'VLAN', 'LAN'],
     featured: true,
-    githubUrl: 'https://github.com/reeyahPacifiCode/cisco_actvity-2.git',
+    githubUrl: 'https://github.com/reeyahPacifiCode/ciscisco_actvity-2.git',
     thumbnail: 'https://images.unsplash.com/photo-1551808525-51a94da548ce?w=800&h=600&fit=crop',
     images: 
     [
