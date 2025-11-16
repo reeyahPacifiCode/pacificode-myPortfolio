@@ -120,9 +120,12 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
           className="fixed inset-0 bg-[#5d624c] dark:bg-[#394931]/70 z-50 flex items-center justify-center p-4 animate-fadeOut"
           onClick={() => setIsImageFullscreen(false)}
         >
-          {/* Close Button */}
+           {/* Close Button */}
           <button
-            onClick={() => setIsImageFullscreen(false)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsImageFullscreen(false);
+            }}
             className="absolute top-2 right-2 md:top-4 md:right-4 bg-[#f5f5ec]/70 backdrop-blur-sm p-2 md:p-3 rounded-full hover:bg-[#f5f5ec] transition z-10"
           >
             <X className="w-4 h-4 md:w-6 md:h-6 text-[#2d2d2d]" />
