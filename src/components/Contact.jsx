@@ -15,6 +15,7 @@ export default function Contact() {
   });
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
+  const textareaRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -44,6 +45,16 @@ export default function Contact() {
     setTimeout(() => {
       setNotification({ show: false, type: '', message: '' });
     }, 5000);
+  };
+
+  // Auto-resize textarea function
+  const handleTextareaChange = (e) => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.style.height = 'auto';
+      textarea.style.height = textarea.scrollHeight + 'px';
+    }
+    setFormData({ ...formData, message: e.target.value });
   };
 
   const handleSubmit = async () => {
@@ -99,6 +110,10 @@ export default function Contact() {
       if (response.ok) {
         showNotification('success', 'Message sent successfully! I will get back to you soon.');
         setFormData({ name: '', email: '', message: '' });
+        // Reset textarea height after clearing
+        if (textareaRef.current) {
+          textareaRef.current.style.height = 'auto';
+        }
       } else {
         const errorData = await response.text();
         console.error('EmailJS Error:', errorData);
@@ -192,12 +207,13 @@ export default function Contact() {
                 Message
               </label>
               <textarea
+                ref={textareaRef}
                 placeholder="Your message here..."
                 value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                onChange={handleTextareaChange}
                 rows={5}
                 disabled={isLoading}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#9ca089] dark:text-[#2D2D2D] placeholder:text-gray-400 dark:placeholder:text-[#5d624c] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652]  focus:border-transparent outline-none transition resize-none disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#9ca089] dark:text-[#2D2D2D] placeholder:text-gray-400 dark:placeholder:text-[#5d624c] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652]  focus:border-transparent outline-none transition resize-none disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden min-h-[120px]"
               ></textarea>
             </div>
             <button
