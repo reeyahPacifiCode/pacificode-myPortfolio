@@ -162,7 +162,7 @@ export default function CertificateModal({
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  prevImage();
+                  prevCertificate();
                 }}
                 className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-[#DCE2D6]/100 backdrop-blur-sm p-2 md:p-4 rounded-full hover:bg-[#f5f5ec] transition"
               >
@@ -171,7 +171,7 @@ export default function CertificateModal({
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  nextImage();
+                  nextCertificate();
                 }}
                 className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-[#DCE2D6]/100 backdrop-blur-sm p-2 md:p-4 rounded-full hover:bg-[#f5f5ec] transition"
               >
