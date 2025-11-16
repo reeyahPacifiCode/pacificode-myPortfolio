@@ -27,7 +27,7 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
       onClick={closeModal}
     >
       <div
-        className="bg-[#f5f5ec] dark:bg-[#2D2D2D] rounded-2xl max-w-4xl w-full max-h-[140vh] overflow-hidden relative shadow-2xl flex flex-col"
+        className="bg-[#f5f5ec] dark:bg-[#2D2D2D] rounded-2xl max-w-4xl w-full max-h-[85vh] overflow-hidden relative shadow-2xl flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -94,7 +94,7 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
             {selectedProject.title}
           </h2>
 
-          <p className="text-[#5d624c] dark:text-[#c5beab] leading-relaxed text-sm md:text-base mb-3 md:mb-4 line-clamp-4 md:line-clamp-none">
+          <p className="text-[#5d624c] dark:text-[#c5beab] leading-relaxed text-sm md:text-base mb-3 md:mb-4 ">
             {selectedProject.description}
           </p>
 

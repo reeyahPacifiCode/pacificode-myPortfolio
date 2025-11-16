@@ -5,7 +5,7 @@ export const allProjects = [
     id: 1,
     title: 'PHP | E-Commerce Platform | Condominum',
     category: 'PHP',
-    description: 'A comprehensive condominium e-commerce platform featuring property listings, unit reservations, payment processing, resident authentication, and an advanced admin dashboard for managing properties, amenities, and resident services.',
+    description: 'A comprehensive condominium e-commerce platform featuring property listings, unit reservations, and showing properties, amenities, and resident services.',
     tech: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap'],
     featured: true,
     githubUrl: 'https://github.com/reeyahPacifiCode/php_activity_5.git',
