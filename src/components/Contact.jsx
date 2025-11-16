@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Mail, X, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, X, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
