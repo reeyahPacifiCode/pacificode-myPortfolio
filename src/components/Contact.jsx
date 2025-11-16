@@ -51,11 +51,21 @@ export default function Contact() {
   const handleTextareaChange = (e) => {
     const textarea = textareaRef.current;
     if (textarea) {
+      // Reset height to recalculate
       textarea.style.height = 'auto';
-      textarea.style.height = textarea.scrollHeight + 'px';
+      // Set to scrollHeight with a small buffer for mobile
+      const newHeight = textarea.scrollHeight;
+      textarea.style.height = newHeight + 'px';
     }
     setFormData({ ...formData, message: e.target.value });
   };
+
+  // Initialize textarea height on mount and when message changes externally
+  useEffect(() => {
+    if (textareaRef.current && formData.message === '') {
+      textareaRef.current.style.height = 'auto';
+    }
+  }, [formData.message]);
 
   const handleSubmit = async () => {
     // Validation
@@ -213,7 +223,8 @@ export default function Contact() {
                 onChange={handleTextareaChange}
                 rows={5}
                 disabled={isLoading}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#9ca089] dark:text-[#2D2D2D] placeholder:text-gray-400 dark:placeholder:text-[#5d624c] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652]  focus:border-transparent outline-none transition resize-none disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden min-h-[120px]"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#9ca089] dark:text-[#2D2D2D] placeholder:text-gray-400 dark:placeholder:text-[#5d624c] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652]  focus:border-transparent outline-none transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden min-h-[120px] max-h-[400px]"
+                style={{ fieldSizing: 'content' }}
               ></textarea>
             </div>
             <button
