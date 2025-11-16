@@ -71,23 +71,22 @@ export default function Skills() {
 
   return (
     <section ref={sectionRef} id="skills" className="py-20 bg-[#f5f5ec] dark:bg-[#2D2D2D]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-[#2D2D2D] dark:text-[#c5beab] mb-4">My Skills</h2>
-          <div className="w-20 h-1 bg-[#394931] dark:bg-[#9ca089] mx-auto"></div>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {skills.map((skill, index) => (
-            <div 
-              key={index} 
-              className="space-y-2"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                transition: `all 0.6s ease ${index * 0.1}s`
-              }}
-            >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-[#2D2D2D] dark:text-[#c5beab] mb-4">My Skills</h2>
+            <div className="w-20 h-1 bg-[#394931] dark:bg-[#9ca089] mx-auto"></div>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {skills.map((skill, index) => (
+              <div 
+                key={index} 
+                className="space-y-2"
+                style={{
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                  transition: `all 0.6s ease ${index * 0.1}s`
+                }}
+              >
               <div className="flex justify-between items-center">
                 <span className="font-semibold text-[#2D2D2D] dark:text-[#c5beab]">{skill.name}</span>
                 <span className="text-[#394931] dark:text-[#9ca089] font-semibold">

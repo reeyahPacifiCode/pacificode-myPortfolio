@@ -32,14 +32,12 @@ export function TermsModal({ isOpen, onClose }) {
                 <li>Basic content integration</li>
               </ul>
             </section>
-
             <section>
               <h3 className="text-lg font-semibold mb-2 text-[#2D2D2D]  dark:text-[#E1DBCB]">
                 2. Timeline
               </h3>
               <p>The project will take approximately [X days/weeks], beginning after full payment and delivery of assets.</p>
             </section>
-
             <section>
               <h3 className="text-lg font-semibold mb-2 text-[#2D2D2D]  dark:text-[#E1DBCB]">
                 3. Payment Terms
@@ -49,14 +47,12 @@ export function TermsModal({ isOpen, onClose }) {
                 <li>50% upon completion</li>
               </ul>
             </section>
-
             <section>
               <h3 className="text-lg font-semibold mb-2 text-[#2D2D2D]  dark:text-[#E1DBCB]">
                 4. Revisions
               </h3>
               <p>Up to 2 rounds of revisions. Additional edits cost ₱[your rate]/hr.</p>
             </section>
-
             <section>
               <h3 className="text-lg font-semibold mb-2 text-[#2D2D2D]  dark:text-[#E1DBCB]">
                 5. Client Responsibilities
@@ -66,21 +62,18 @@ export function TermsModal({ isOpen, onClose }) {
                 <li>Stay responsive during development</li>
               </ul>
             </section>
-
             <section>
               <h3 className="text-lg font-semibold mb-2 text-[#2D2D2D]  dark:text-[#E1DBCB]">
                 6. Ownership
               </h3>
               <p>After full payment, the client owns the final website. Developer may showcase it in portfolio.</p>
             </section>
-
             <section>
               <h3 className="text-lg font-semibold mb-2 text-[#2D2D2D]  dark:text-[#E1DBCB]">
                 7. Maintenance
               </h3>
               <p>No post-delivery support unless agreed separately.</p>
             </section>
-
             <section>
               <h3 className="text-lg font-semibold mb-2 text-[#2D2D2D]  dark:text-[#E1DBCB]">
                 8. Cancellation
@@ -90,14 +83,12 @@ export function TermsModal({ isOpen, onClose }) {
                 <li>Developer may cancel after 14+ days of no communication.</li>
               </ul>
             </section>
-
             <section>
               <h3 className="text-lg font-semibold mb-2 text-[#2D2D2D]  dark:text-[#E1DBCB]">
                 9. Disclaimer
               </h3>
               <p>I am not liable for hosting/server issues or data loss after handover.</p>
             </section>
-
             <section>
               <h3 className="text-lg font-semibold mb-2 text-[#2D2D2D]  dark:text-[#E1DBCB]">
                 10. Agreement
@@ -106,7 +97,6 @@ export function TermsModal({ isOpen, onClose }) {
             </section>
           </div>
         </div>
-
         <div className="p-6 flex border-t border-[#2D2D2D] dark:border-[#4a5851] justify-center">
           <button
             onClick={onClose}
@@ -137,7 +127,6 @@ export function PrivacyModal({ isOpen, onClose }) {
           <p className="text-sm text-[#4E5652]  dark:text-[#f5f5ec] mb-6">
             Updated April 21st, 2024
           </p>
-
           <div className="space-y-6">
             <section>
               <h3 className="text-lg font-semibold mb-2 text-[#2D2D2D]  dark:text-[#E1DBCB]">
@@ -145,42 +134,36 @@ export function PrivacyModal({ isOpen, onClose }) {
               </h3>
               <p>Welcome to our website. We respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and safeguard your information.</p>
             </section>
-
             <section>
               <h3 className="text-lg font-semibold mb-2 text-[#2D2D2D]  dark:text-[#E1DBCB]">
                 Information We Collect
               </h3>
               <p>We collect various types of information, including personal details, usage data, and other details that you provide while using our website.</p>
             </section>
-
             <section>
               <h3 className="text-lg font-semibold mb-2 text-[#2D2D2D]  dark:text-[#E1DBCB]">
                 How We Use Your Information
               </h3>
               <p>Your information is used to improve our services, personalize your experience, and communicate with you regarding updates, news, and offers related to our website.</p>
             </section>
-
             <section>
               <h3 className="text-lg font-semibold mb-2 text-[#2D2D2D]  dark:text-[#E1DBCB]">
                 Data Protection
               </h3>
               <p>We take appropriate security measures to protect your personal data from unauthorized access, alteration, or destruction.</p>
             </section>
-
             <section>
               <h3 className="text-lg font-semibold mb-2 text-[#2D2D2D]  dark:text-[#E1DBCB]">
                 Third-Party Links
               </h3>
               <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices of these sites and encourage you to review their policies.</p>
             </section>
-
             <section>
               <h3 className="text-lg font-semibold mb-2 text-[#2D2D2D]  dark:text-[#E1DBCB]">
                 Your Rights
               </h3>
               <p>You have the right to access, update, or delete your personal information. If you wish to exercise these rights, please contact us directly.</p>
             </section>
-
             <section>
               <h3 className="text-lg font-semibold mb-2 text-[#2D2D2D]  dark:text-[#E1DBCB]">
                 Changes to This Policy
@@ -189,7 +172,6 @@ export function PrivacyModal({ isOpen, onClose }) {
             </section>
           </div>
         </div>
-
         <div className="p-6 border-t border-[#2D2D2D] dark:border-[#4a5851] flex justify-center ">
           <button
             onClick={onClose}
@@ -209,38 +191,30 @@ export const modalScrollbarStyles = `
   .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
   }
-  
   .custom-scrollbar::-webkit-scrollbar-track {
     background: transparent;
   }
-  
   .custom-scrollbar::-webkit-scrollbar-thumb {
     background: #394931;
     border-radius: 3px;
   }
-
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #5d624c;
   }
-  
   .custom-scrollbar {
     scrollbar-width: thin;
     scrollbar-color: #394931 transparent;
   }
-
    /* Para sa dark mode - class based */
   .dark .custom-scrollbar::-webkit-scrollbar-thumb {
     background: #9ca089;
   }
-  
   .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #5d624c;
   }
-  
   .dark .custom-scrollbar {
     scrollbar-color: #9ca089 transparent;
   }
-
   /* Mobile responsive adjustments */
 @media (max-width: 768px) {
   #home .relative > div:first-child {

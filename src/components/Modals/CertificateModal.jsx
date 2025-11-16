@@ -59,7 +59,6 @@ export default function CertificateModal({
           >
             <X className="w-5 h-5 md:w-6 md:h-6 text-[#2D2D2D] dark:text-[#E1DBCB]" />
           </button>
-
           {/* Certificate Image Gallery */}
           <div className="relative flex-shrink-0">
             <div className="relative h-[280px] md:h-[360px] bg-[#DCE2D6]/40 dark:bg-[#394931]/50">
@@ -69,13 +68,11 @@ export default function CertificateModal({
                 className="w-full h-full object-contain cursor-zoom-in"
                 onClick={() => setIsImageFullscreen(true)}
               />
-
               {/* Certificate Counter */}
               <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-[#4E5652]/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold">
                 {currentCertIndex + 1} / {certificates.length}
               </div>
             </div>
-
             {/* Thumbnail Strip */}
             {certificates.length > 1 && (
               <div className="flex gap-2 p-2 overflow-x-auto bg-[#DCE2D6] dark:bg-[#394931]/30 custom-scrollbar">
@@ -95,7 +92,6 @@ export default function CertificateModal({
               </div>
             )}
           </div>
-
           {/* Certificate Details */}
           <div className="flex-grow p-5 md:p-8 overflow-y-auto">
             <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4 flex-wrap">
@@ -114,7 +110,6 @@ export default function CertificateModal({
             <p className="text-[#4E5652] dark:text-[#c5beab] leading-relaxed text-sm md:text-base mb-4 md:mb-5">
               {certificates[currentCertIndex].description}
             </p>
-
             {/* Progress Dots */}
             <div className="flex items-center justify-center space-x-2 mt-4 md:mt-5">
               {certificates.map((_, index) => (
@@ -149,14 +144,12 @@ export default function CertificateModal({
           >
             <X className="w-4 h-4 md:w-6 md:h-6 text-[#2d2d2d]" />
           </button>
-
           <img
             src={certificates[currentCertIndex].image}
             alt="Fullscreen view"
             className="max-w-full max-h-full object-contain"
             onClick={(e) => e.stopPropagation()}
           />
-
           {certificates.length > 1 && (
             <>
               <button
@@ -179,7 +172,6 @@ export default function CertificateModal({
               </button>
             </>
           )}
-
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-semibold">
             {currentCertIndex + 1} / {certificates.length}
           </div>

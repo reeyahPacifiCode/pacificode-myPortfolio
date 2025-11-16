@@ -14,9 +14,6 @@ export default function Footer() {
             <p className="text-[#c5beab] dark:text-[#9ca089]">
               © 2024 Pacificode. All rights reserved.
             </p>
-            {/* <p className="text-gray-500 dark:text-[#868b6b] text-sm mt-2">
-             
-            </p> */}
             {/* Social Media Links */}
             <div className="flex items-center justify-center space-x-4 mt-4">
               <a
@@ -52,7 +49,6 @@ export default function Footer() {
                 <Instagram className="w-5 h-5" />
               </a>
             </div>
-
             {/* Legal Links */}
             <div className="flex items-center justify-center space-x-6 mt-6 text-sm">
               <button
@@ -72,7 +68,6 @@ export default function Footer() {
           </div>
         </div>
       </footer>
-
       {/* Modals */}
       <TermsModal isOpen={showTerms} onClose={() => setShowTerms(false)} />
       <PrivacyModal isOpen={showPrivacy} onClose={() => setShowPrivacy(false)} />

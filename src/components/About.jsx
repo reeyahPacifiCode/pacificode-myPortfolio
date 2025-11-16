@@ -35,7 +35,6 @@ export default function About() {
           </h2>
           <div className="w-20 h-1 bg-[#394931] dark:bg-[#9ca089] mx-auto"></div>
         </div>
-
         <div className="max-w-3xl mx-auto text-center">
           <p className={`text-[#4E5652] dark:text-[#c5beab] text-lg leading-relaxed mb-6 ${isVisible ? 'slide-in-left' : ''}`}>
             I'm currently pursuing a Bachelor's degree in Information Technology at Cavite State

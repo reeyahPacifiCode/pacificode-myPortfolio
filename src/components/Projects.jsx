@@ -58,7 +58,6 @@ export default function Projects({ setSelectedProject, navigateToWorks }) {
             Explore my featured projects across various technologies and domains
           </p>
         </div>
-
         {/* Featured Projects Grid */}
         <div 
           ref={(el) => (sectionRefs.current.grid = el)}
@@ -67,30 +66,29 @@ export default function Projects({ setSelectedProject, navigateToWorks }) {
         >
           {featuredProjects.map((project) => (
             <div
-            key={project.id}
-            onClick={() => setSelectedProject(project)}
-            className="group bg-[#f5f5ec] dark:bg-[#2D2D2D] rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2"
+              key={project.id}
+              onClick={() => setSelectedProject(project)}
+              className="group bg-[#f5f5ec] dark:bg-[#2D2D2D] rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2"
             >
-              <div className="relative overflow-hidden h-60">
-                <img
+            <div className="relative overflow-hidden h-60">
+              <img
                   src={project.thumbnail}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#394931]/90 via-[#868b6b]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-5 text-[#f5f5ec] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="text-sm font-semibold mb-2">Click to view details</p>
+                />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#394931]/90 via-[#868b6b]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-0 left-0 right-0 p-5 text-[#f5f5ec] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <p className="text-sm font-semibold mb-2">Click to view details</p>
                     <div className="flex gap-2 flex-wrap">
                       {project.tech.slice(0, 3).map((tech, idx) => (
                         <span key={idx} className="px-2 py-1 bg-[#f5f5ec]/20 backdrop-blur-sm rounded text-xs">
                           {tech}
                         </span>
-                      ))}
+                        ))}
                     </div>
                   </div>
                 </div>
               </div>
-            
               <div className="p-5">
                 <div className="flex items-center justify-between mb-2.5">
                   <span className="text-[#4E5652] dark:text-[#9ca089] text-sm font-semibold px-3 py-1 bg-[#394931]/10 dark:bg-[#9ca089]/20 rounded-full">
@@ -110,8 +108,6 @@ export default function Projects({ setSelectedProject, navigateToWorks }) {
             </div>
           ))}
         </div>
-
-
         {/* See more Button */}
         <div 
           ref={(el) => (sectionRefs.current.button = el)}

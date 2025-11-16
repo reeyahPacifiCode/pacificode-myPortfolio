@@ -46,7 +46,6 @@ export default function Contact() {
       setNotification({ show: false, type: '', message: '' });
     }, 5000);
   };
-
   // Auto-resize textarea function
   const handleTextareaChange = (e) => {
     const textarea = textareaRef.current;
@@ -73,24 +72,19 @@ export default function Contact() {
       showNotification('error', 'Please fill in all fields');
       return;
     }
-
      // Email validation - Must have @ symbol and proper format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
     // Check if email contains @
     if (!formData.email.includes('@')) {
       showNotification('error', 'Email must contain @ symbol (e.g., example@gmail.com)');
       return;
     }
-    
     // Check complete email format
     if (!emailRegex.test(formData.email)) {
       showNotification('error', 'Please enter a valid email address (e.g., example@gmail.com)');
       return;
     }
-
     setIsLoading(true);
-
     // EmailJS Configuration
     const SERVICE_ID = 'service_zl18q39';
     const TEMPLATE_ID = 'template_z1gjgvs';
@@ -168,7 +162,6 @@ export default function Contact() {
           </div>
         </div>
       )}
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`text-center mb-12 transition-all duration-[800ms] ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
@@ -225,7 +218,8 @@ export default function Contact() {
                 disabled={isLoading}
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#9ca089] dark:text-[#2D2D2D] placeholder:text-gray-400 dark:placeholder:text-[#5d624c] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652]  focus:border-transparent outline-none transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden min-h-[120px] max-h-[400px]"
                 style={{ fieldSizing: 'content' }}
-              ></textarea>
+              >
+              </textarea>
             </div>
             <button
               onClick={handleSubmit}

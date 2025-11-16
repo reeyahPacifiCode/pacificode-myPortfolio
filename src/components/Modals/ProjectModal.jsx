@@ -37,7 +37,6 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
         >
           <X className="w-6 h-6 text-[#2D2D2D] dark:text-[#E1DBCB]" />
         </button>
-
         {/* Image Gallery */}
         <div className="relative flex-shrink-0">
           <div className="relative h-[280px] md:h-[320px] bg-[#DCE2D6] dark:bg-[#394931]/30 flex items-center justify-center">
@@ -47,13 +46,11 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
               className="max-w-full max-h-full object-contain cursor-zoom-in"
               onClick={() => setIsImageFullscreen(true)}
             />
-
             {/* Image Counter */}
             <div className="absolute bottom-2 md:bottom-10 left-1/2 -translate-x-1/2 bg-[#4E5652]/50 text-white px-3 py-1 md:px-4 md:py-1.5 rounded-full text-xs font-semibold">
               {currentImageIndex + 1} / {selectedProject.images.length}
             </div>
           </div>
-
           {/* Thumbnail Strip */}
           {selectedProject.images.length > 1 && (
             <div className="flex gap-2 p-2 md:p-3 overflow-x-auto bg-[#DCE2D6]/40 dark:bg-[#394931]/50 custom-scrollbar">
@@ -73,7 +70,6 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
             </div>
           )}
         </div>
-
         {/* Project Details */}
         <div className="flex-grow p-4 md:p-6 overflow-y-auto">
           <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3 flex-wrap">
@@ -97,7 +93,6 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
           <p className="text-[#5d624c] dark:text-[#c5beab] leading-relaxed text-sm md:text-base mb-3 md:mb-4 ">
             {selectedProject.description}
           </p>
-
           {/* Action Button */}
           <div className="mt-3 md:mt-4">
             <a
@@ -136,7 +131,6 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
             className="max-w-full max-h-full object-contain"
             onClick={(e) => e.stopPropagation()}
           />
-
           {selectedProject.images.length > 1 && (
             <>
               <button
@@ -159,7 +153,6 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
               </button>
             </>
           )}
-
           <div className="absolute bottom-2 md:bottom-4 left-1/2 -translate-x-1/2 bg-[#DCE2D6]/100 backdrop-blur-sm text-[#2D2D2D] px-4 py-2 md:px-6 md:py-3 rounded-full text-xs md:text-sm font-semibold">
             {currentImageIndex + 1} / {selectedProject.images.length}
           </div>
@@ -177,11 +170,9 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
             transform: scale(1);
           }
         }
-
         .animate-fadeIn {
           animation: fadeIn 0.3s ease-out;
         }
-
         /* Line clamp for mobile */
         .line-clamp-4 {
           display: -webkit-box;
@@ -189,40 +180,32 @@ export default function ProjectModal({ selectedProject, setSelectedProject }) {
           -webkit-box-orient: vertical;
           overflow: hidden;
         }
-
         /* Horizontal Scrollbar (for thumbnail strip) */
         .custom-scrollbar::-webkit-scrollbar {
           height: 6px;
           width: 6px;
         }
-        
         .custom-scrollbar::-webkit-scrollbar-track {
           background: transparent !important;
         }
-        
         .custom-scrollbar::-webkit-scrollbar-thumb {
           background: #394931 !important;
           border-radius: 4px !important;
         }
-        
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
           background: #5d624c !important;
         }
-        
         .custom-scrollbar {
           scrollbar-width: thin !important;
           scrollbar-color: #394931 transparent !important;
         }
-
         /* Dark mode scrollbar */
         .dark .custom-scrollbar::-webkit-scrollbar-thumb {
           background: #9ca089 !important;
         }
-        
         .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
           background: #868b6b !important;
         }
-        
         .dark .custom-scrollbar {
           scrollbar-color: #9ca089 transparent !important;
         }

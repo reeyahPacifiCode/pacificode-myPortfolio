@@ -46,15 +46,13 @@ export default function Hero({ setShowCertificates }) {
             {typedText}
             <span className="animate-pulse">|</span>
           </h3>
-
           {/* Description */}
           <p className="text-[#4E5652] dark:text-[#c5beab] text-lg">
             A dedicated and hardworking IT Student with basic knowledge of web development, UI/UX design, and programming.
           </p>
-
           {/* Buttons Here */}
           <div className="flex space-x-4 pt-4">
-          {/* Download CV */}
+            {/* Download CV */}
             <button
               onClick={downloadCV}
               className="inline-flex items-center gap-2 border-2 border-[#394931] dark:border-[#9ca089] text-[#394931] dark:text-[#9ca089] px-3 py-2 md:px-4 md:py-2 rounded-md transition font-semibold relative overflow-hidden group text-md md:text-base leading-none whitespace-nowrap"
@@ -63,19 +61,18 @@ export default function Hero({ setShowCertificates }) {
               <Download className="w-4 h-4 md:w-5 md:h-5 relative z-10 block group-hover:text-[#f5f5ec] transition-colors duration-300" />
               <span className="relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-300">Download CV</span>
             </button>
-          {/* View Certificates */}
-           <button
-              onClick={() => setShowCertificates(true)}
-              className="inline-flex items-center gap-2 border-2 border-[#394931] dark:border-[#9ca089] text-[#394931] dark:text-[#9ca089] px-3 py-2 md:px-4 md:py-2 rounded-md transition font-semibold relative overflow-hidden group text-md md:text-base leading-none whitespace-nowrap"
-            >
-                <span className="absolute inset-0 bg-[#394931] dark:bg-[#5d624c] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out pointer-events-none"></span>
-                <svg className="w-4 h-4 md:w-5 md:h-5 relative z-10 block group-hover:text-[#f5f5ec] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                <span className="relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-300">View Cert</span>
-            </button>
+            {/* View Certificates */}
+            <button
+                onClick={() => setShowCertificates(true)}
+                className="inline-flex items-center gap-2 border-2 border-[#394931] dark:border-[#9ca089] text-[#394931] dark:text-[#9ca089] px-3 py-2 md:px-4 md:py-2 rounded-md transition font-semibold relative overflow-hidden group text-md md:text-base leading-none whitespace-nowrap"
+              >
+                  <span className="absolute inset-0 bg-[#394931] dark:bg-[#5d624c] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out pointer-events-none"></span>
+                  <svg className="w-4 h-4 md:w-5 md:h-5 relative z-10 block group-hover:text-[#f5f5ec] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  <span className="relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-300">View Cert</span>
+              </button>
           </div>
-
           {/* Enhanced Social Media Icons with hover scale effect */}
           <div className="flex items-center space-x-4 pt-4">
             <a href="https://x.com/reya_emaypi" 
@@ -100,39 +97,33 @@ export default function Hero({ setShowCertificates }) {
             </a>
           </div>
         </div>
-
         {/* Enhanced Profile Image Section with Beautiful Decorative Circles */}
         <div className="relative flex items-center justify-center">
           {/* Large decorative circles */}
           <div className="absolute -top-12 -left-10 w-40 h-40 bg-[#394931] dark:bg-[#5d624c] rounded-full opacity-10 animate-float"></div>
           <div className="absolute -top-9 right-1/4 w-24 h-24 bg-[#394931] dark:bg-[#5d624c] rounded-full opacity-25 animate-float"></div>
-          
           {/* Outline circles */}
           <div className="absolute top-8 -left-4 w-20 h-20 border-4 border-[#394931] dark:border-[#9ca089] rounded-full opacity-30 animate-spin-slow"></div>
           <div className="absolute -bottom-8 right-12 w-28 h-28 border-3 border-[#9ca089] dark:border-[#5d624c] rounded-full opacity-25 animate-reverse-spin"></div>
           <div className="absolute -bottom-15 right-4 w-28 h-28 border-3 border-[#9ca089] dark:border-[#5d624c] rounded-full opacity-25 animate-reverse-spin"></div>
           <div className="absolute -bottom-16 -left-16 w-48 h-48 border-4 border-[#394931] dark:bg-[#5d624c] rounded-full opacity-30 animate-float-delayed"></div>
-          
           {/* Mini circles */}
           <div className="absolute top-16 right-8 w-6 h-6 bg-[#9ca089] dark:bg-[#7a7d6a] rounded-full opacity-40 animate-bounce-slow"></div>
           <div className="absolute bottom-20 -left-2 w-8 h-8 bg-[#394931] dark:bg-[#5d624c] rounded-full opacity-35 animate-float"></div>
           <div className="absolute top-3/4 -right-2 w-5 h-5 bg-[#9ca089] dark:bg-[#868b6b] rounded-full opacity-45 animate-pulse-slow"></div>
           <div className="absolute bottom-1/4 left-4 w-7 h-7 border-2 border-[#394931] dark:border-[#9ca089] rounded-full opacity-30 animate-float-delayed"></div>
           <div className="absolute top-1 left-8 w-4 h-4 bg-[#394931] dark:bg-[#5d624c] rounded-full opacity-50 animate-bounce-slow"></div>
-          
           {/* Blur effect circles */}
           <div className="absolute inset-0 bg-[#394931] dark:bg-[#5d624c] rounded-full blur-3xl opacity-15 scale-75"></div>
           <div className="absolute top-12 right-12 w-32 h-32 bg-[#9ca089] dark:bg-[#7a7d6a] rounded-full blur-2xl opacity-20 animate-pulse-slow"></div>
-          
           {/* Profile image */}
           <div className="relative bg-[#9ca089] dark:bg-[#5d624c] rounded-full overflow-hidden aspect-square w-full">
             <img src="rhea.jpg" alt="My Profile" className="w-full h-full object-cover" />
           </div>
-          
         </div>
       </div>
 
-<style>{`
+      <style>{`
         @keyframes typing {
           from { width: 0 }
           to { width: 100% }
