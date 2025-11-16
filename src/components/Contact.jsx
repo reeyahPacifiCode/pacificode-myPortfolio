@@ -51,23 +51,19 @@ export default function Contact() {
   const handleTextareaChange = (e) => {
     const textarea = textareaRef.current;
     if (textarea) {
-      // Force height to 0 first to get accurate scrollHeight
-      textarea.style.height = '0px';
-      // Get the actual content height
-      const scrollHeight = textarea.scrollHeight;
-      // Set to exact scrollHeight
-      textarea.style.height = scrollHeight + 'px';
+      // Reset height to recalculate
+      textarea.style.height = 'auto';
+      // Set to scrollHeight with a small buffer for mobile
+      const newHeight = textarea.scrollHeight;
+      textarea.style.height = newHeight + 'px';
     }
     setFormData({ ...formData, message: e.target.value });
   };
 
-  // Initialize textarea height on mount and reset when empty
+  // Initialize textarea height on mount and when message changes externally
   useEffect(() => {
-    if (textareaRef.current) {
-      if (formData.message === '') {
-        textareaRef.current.style.height = '0px';
-        textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
-      }
+    if (textareaRef.current && formData.message === '') {
+      textareaRef.current.style.height = 'auto';
     }
   }, [formData.message]);
 
@@ -225,9 +221,9 @@ export default function Contact() {
                 placeholder="Your message here..."
                 value={formData.message}
                 onChange={handleTextareaChange}
-                rows={1}
+                rows={5}
                 disabled={isLoading}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#9ca089] dark:text-[#2D2D2D] placeholder:text-gray-400 dark:placeholder:text-[#5d624c] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652] focus:border-transparent outline-none transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden leading-relaxed"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#9ca089] dark:text-[#2D2D2D] placeholder:text-gray-400 dark:placeholder:text-[#5d624c] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652]  focus:border-transparent outline-none transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden min-h-[120px] max-h-[400px]"
                 style={{ fieldSizing: 'content' }}
               ></textarea>
             </div>
@@ -273,13 +269,6 @@ export default function Contact() {
 
         #contact input:focus, #contact textarea:focus {
           transform: scale(1.01);
-        }
-
-        /* Prevent zoom on mobile when focusing textarea */
-        @media screen and (max-width: 768px) {
-          #contact textarea {
-            font-size: 16px !important;
-          }
         }
 
         .dark #contact input:focus, .dark #contact textarea:focus {
