@@ -158,16 +158,16 @@ export default function Contact() {
             <div className={`transition-all duration-700 delay-100 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
             }`}>
-              <label className="block text-sm font-medium text-[#4E5652] dark:text-[#c5beab] mb-2">
+              <label className="block text-sm font-medium text-[#4E5652] dark:text-[#c5beab] mb-2 uppercase">
                 Fullname
               </label>
               <input
                 type="text"
                 placeholder="Example: Adam Wathan"
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value.toUpperCase() })}
                 disabled={isLoading}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#9ca089] dark:text-[#2D2D2D] placeholder:text-gray-400 dark:placeholder:text-[#5d624c] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652] focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-[#DCE2D6] text-[#394931] dark:border-[#5d624c] dark:bg-[#9ca089] dark:text-[#2D2D2D] placeholder:text-gray-400 dark:placeholder:text-[#5d624c] focus:ring-2 focus:ring-[#4E5652] dark:focus:ring-[#4E5652] focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed uppercase"
               />
             </div>
             <div className={`transition-all duration-500 delay-150 ${
@@ -210,9 +210,9 @@ export default function Contact() {
               <span className="absolute inset-0 bg-[#394931] dark:bg-[#5d624c] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></span>
               {isLoading ? (
                 <>
-                  <div className="w-5 h-5 border-2 border-[#394931] dark:border-[#5d624c] group-hover:border-[#f5f5ec] border-t-transparent rounded-full animate-spin relative z-10 transition-colors duration-100"></div>
-                  <span className="relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-200">Sending...</span>
-                </>
+                    <Loader2 className="w-5 h-5 animate-spin relative z-10 group-hover:text-[#f5f5ec] transition-colors" />
+                    <span className="relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-200">Sending...</span>
+                  </>
               ) : (
                 <>
                   <Mail className="w-5 h-5 relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-200" />
