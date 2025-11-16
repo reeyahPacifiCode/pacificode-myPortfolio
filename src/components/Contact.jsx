@@ -210,9 +210,9 @@ export default function Contact() {
               <span className="absolute inset-0 bg-[#394931] dark:bg-[#5d624c] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></span>
               {isLoading ? (
                 <>
-                    <Loader2 className="w-5 h-5 animate-spin relative z-10 group-hover:text-[#f5f5ec] transition-colors" />
-                    <span className="relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-200">Sending...</span>
-                  </>
+                  <Loader2 className="w-5 h-5 animate-spin relative z-10 group-hover:text-[#f5f5ec] transition-colors" />
+                  <span className="relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-200">Sending...</span>
+                </>
               ) : (
                 <>
                   <Mail className="w-5 h-5 relative z-10 group-hover:text-[#f5f5ec] transition-colors duration-200" />
