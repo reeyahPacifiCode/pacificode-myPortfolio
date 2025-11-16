@@ -139,11 +139,15 @@ export default function CertificateModal({
           className="fixed inset-0 bg-[#4a5851] z-[60] flex items-center justify-center p-4 "
           onClick={() => setIsImageFullscreen(false)}
         >
+          {/* Close Button */}
           <button
-            onClick={() => setIsImageFullscreen(false)}
-            className="absolute top-4 right-4 bg-[#f5f5ec]/70 backdrop-blur-sm p-3 rounded-full hover:bg-[#f5f5ec] transition"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsImageFullscreen(false);
+            }}
+            className="absolute top-2 right-2 md:top-4 md:right-4 bg-[#f5f5ec]/70 backdrop-blur-sm p-2 md:p-3 rounded-full hover:bg-[#f5f5ec] transition z-10"
           >
-            <X className="w-6 h-6 text-[#2d2d2d]" />
+            <X className="w-4 h-4 md:w-6 md:h-6 text-[#2d2d2d]" />
           </button>
 
           <img
@@ -158,20 +162,20 @@ export default function CertificateModal({
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  prevCertificate();
+                  prevImage();
                 }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#f5f5ec]/70  backdrop-blur-sm p-4 rounded-full hover:bg-[#f5f5ec] transition"
+                className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-[#DCE2D6]/100 backdrop-blur-sm p-2 md:p-4 rounded-full hover:bg-[#f5f5ec] transition"
               >
-                <ChevronLeft className="w-8 h-8 text-[#2d2d2d]" />
+                <ChevronLeft className="w-5 h-5 md:w-8 md:h-8 text-[#2D2D2D]" />
               </button>
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  nextCertificate();
+                  nextImage();
                 }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#f5f5ec]/70 backdrop-blur-sm p-4 rounded-full hover:bg-[#f5f5ec] transition"
+                className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-[#DCE2D6]/100 backdrop-blur-sm p-2 md:p-4 rounded-full hover:bg-[#f5f5ec] transition"
               >
-                <ChevronRight className="w-8 h-8 text-[#2d2d2d]" />
+                <ChevronRight className="w-5 h-5 md:w-8 md:h-8 text-[#2D2D2D]" />
               </button>
             </>
           )}
